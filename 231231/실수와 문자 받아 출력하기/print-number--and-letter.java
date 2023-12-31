@@ -7,6 +7,6 @@ public class Main {
         String s = sc.nextLine();
         double a = sc.nextDouble();
         double b = sc.nextDouble();
-        System.out.printf("%s\n%.2f\n%.2f",s,a,b);
+        System.out.printf("%s\n%.2f\n%.2f",s.charAt(0),a,b);
     }
 }
