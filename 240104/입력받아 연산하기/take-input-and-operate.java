@@ -6,7 +6,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int a = sc.nextInt() + 87;
-        int b = sc.nextInt() / 10;
+        int b = sc.nextInt() % 10;
 
         System.out.printf("%d\n%d",a,b);
 
