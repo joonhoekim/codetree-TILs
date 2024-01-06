@@ -9,7 +9,7 @@ public class Main {
     if(input == 'S') {
       System.out.println("Superior");
     } else if (input == 'A') {
-      System.out.println("Good");
+      System.out.println("Excellent");
     } else if (input == 'B') {
       System.out.println("Good");
     } else if (input == 'C') {
