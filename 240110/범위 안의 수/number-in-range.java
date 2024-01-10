@@ -7,7 +7,7 @@ public class Main {
         int a = sc.nextInt();
         
 
-        if(a>=10 && a<=20) {
+        if(10<= a && a<=20) {
             System.out.println("yes");
         } else {
             System.out.println("no");
