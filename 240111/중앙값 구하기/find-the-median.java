@@ -7,11 +7,11 @@ public class Main {
         int b = sc.nextInt();
         int c = sc.nextInt();
         //Precondition: a!=b, b!=c, c!=a 
-        if(a<b && b<c){
+        if( (a<b && b<c) || (c<b && b<a)){
             System.out.println(b);
-        } else if (b<a && a<c) {
+        } else if ((b<a && a<c) || (c<a && a<b)) {
             System.out.println(a);
-        } else {
+        } else  {
             System.out.println(c);
         }
     }
