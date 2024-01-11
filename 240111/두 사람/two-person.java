@@ -9,6 +9,7 @@ public class Main {
         String sex2 = sc.next();
 
         //아직 이 메서드는 안배웠던 것 같은데?
+        //아하 next().charAt(0) 으로 처리했구나
         if ((sex1.equals("M")  && age1 >= 19) || (sex2.equals("M") && age2 >= 19)) {
             System.out.println(1);
         } else {
