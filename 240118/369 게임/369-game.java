@@ -6,8 +6,6 @@ public class Main {
     Scanner sc = new Scanner(System.in);
     int given = sc.nextInt();
 
-    long startTime = System.currentTimeMillis();
-
     for (int i = 1; i <= given; i++) {
 
       if (i % 3 == 0) {
@@ -20,7 +18,5 @@ public class Main {
         System.out.print(i + " ");
       }
     }
-
-    System.out.println("\n" + (System.currentTimeMillis() - startTime));
   }
 }
