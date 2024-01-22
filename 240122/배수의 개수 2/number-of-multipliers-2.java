@@ -5,7 +5,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int oddCount = 0;
         for(int i = 0; i<10; i++) {
-            if(i%2==1) {
+
+            if(sc.nextInt()%2==1) {
                 oddCount++;
             } 
         }
