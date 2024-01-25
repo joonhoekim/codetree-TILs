@@ -4,15 +4,15 @@ public class Main {
         
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        boolean condi = false;
+        boolean satisfied = false;
         for(int i=2; i<n; i++){
             if(n%i==0) {
-                condi=true;
+                satisfied=true;
                 break;
             }
         }
 
-        if(condi) {
+        if(satisfied) {
             System.out.print("C");
         } else {
             System.out.print("N");
