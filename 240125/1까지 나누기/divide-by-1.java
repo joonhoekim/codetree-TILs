@@ -8,7 +8,7 @@ public class Main {
             n/=i;
 
 
-            if(n<1){
+            if(n<=1){
                 System.out.printf("%d",i);
 
                 break;
