@@ -7,10 +7,7 @@ public class Main {
 
     for (; ; ) {
       int i = 0;
-      if ((i = sc.nextInt()) == 0) {
-        break;
-      }
-      System.out.println(i);
+      (i = sc.nextInt()) == 0) ? break:System.out.println(i);
     }
 
   }
