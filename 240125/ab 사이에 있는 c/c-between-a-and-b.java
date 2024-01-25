@@ -6,8 +6,10 @@ public class Main {
          int a = sc.nextInt(), b=sc.nextInt(), c=sc.nextInt();
         boolean condi = false;
         for(int i=a; i<=b; i++){
-            if(i%c==0) condi=true;
-            break;
+            if(i%c==0) {
+                condi=true;
+                break;
+            }
         }
 
         if(condi) {
