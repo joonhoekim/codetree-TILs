@@ -7,6 +7,7 @@ public class Main {
         boolean condi = false;
         for(int i=a; i<=b; i++){
             if(i%c==0) condi=true;
+            break;
         }
 
         if(condi) {
