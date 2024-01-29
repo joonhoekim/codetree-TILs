@@ -7,7 +7,7 @@ public class Main {
 
         for(int i=n;i>=1;i--){ //이렇게 풀면 4사분면이 아니라 1사분면 모양이 된다.
             for(int j=n;j>=1;j--){
-                if(i==1 || j==1 || i==n || j==n) {
+                if(i==n || j==1) {
                     System.out.print("* ");
                 } else if(j>i){
                     System.out.print("* ");
