@@ -11,8 +11,8 @@ public class Main {
                 blankCnt = n-i-1;
                 starCnt = 2*i +1;
             } else {
-                blankCnt = i-n+1;
-                starCnt = 2*n-2*i+3;
+                blankCnt = (i-n)+1;
+                starCnt = 2*(n-(i-n)-1)-1;
             }
 
             for(int j=0;j<blankCnt;j++){
