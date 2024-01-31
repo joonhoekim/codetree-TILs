@@ -11,7 +11,7 @@ public class Main {
                 System.out.print("  ");
             }
             for (int j=i; j<n; j++) {
-                if(cnt=='Z'+1) cnt='A';
+                if(cnt>'Z') cnt='A';
 
                 System.out.print(cnt++ + " ");
             }
