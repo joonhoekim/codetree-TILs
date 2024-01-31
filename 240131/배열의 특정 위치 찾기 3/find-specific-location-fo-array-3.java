@@ -6,7 +6,7 @@ public class Main {
         int n = 100; // sc.nextInt();
         
         int[] arr = new int[n];
-        int last;
+        int last=100;
 
         for(int i=0;i<n;i++){
             arr[i]=sc.nextInt();
@@ -17,7 +17,6 @@ public class Main {
                 break;
             }
         }
-
         int sum = arr[--last] + arr[--last] + arr[--last];
         System.out.printf("%d",sum);
 
