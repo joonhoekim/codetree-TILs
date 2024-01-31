@@ -6,18 +6,19 @@ public class Main {
         int n = 100; // sc.nextInt();
         
         int[] arr = new int[n];
-        int size=0;
+        int last;
 
         for(int i=0;i<n;i++){
             arr[i]=sc.nextInt();
             
             if(arr[i]==0) {
+                //사이즈를 매번 구할 필요없이 마지막 i만 받아오면 됨
+                last = i; 
                 break;
             }
-            size++;
         }
 
-        int sum = arr[--size] + arr[--size] + arr[--size];
+        int sum = arr[--last] + arr[--last] + arr[--last];
         System.out.printf("%d",sum);
 
     }
