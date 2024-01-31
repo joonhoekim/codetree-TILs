@@ -16,8 +16,8 @@ public class Main {
             size++;
         }
 
-        for(int i=0; i<size; i++){
-            System.out.print(arr[size-i-1]+" ");
+        for(int i=size-1; i>=0; i--){
+            System.out.print(arr[i]+" ");
         }
     }
 }
