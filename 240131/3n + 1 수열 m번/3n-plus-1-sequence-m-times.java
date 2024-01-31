@@ -9,6 +9,9 @@ public class Main {
             int n = sc.nextInt();
 
             for(;;){
+                if(n==1){
+                    break;
+                }
                 if(n%2==0) {
                     n=n/2;
                 } else {
@@ -16,9 +19,7 @@ public class Main {
                 }
                 cnt++;
 
-                if(n==1){
-                    break;
-                }
+  
             }
         System.out.println(cnt);
         cnt=0;
