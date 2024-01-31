@@ -17,11 +17,12 @@ public class Main {
                 cnt++;
 
                 if(n==1){
-                    cnt=0;
+                    
                     break;
                 }
             }
         System.out.println(cnt);
+        cnt=0;
         }
         
         
