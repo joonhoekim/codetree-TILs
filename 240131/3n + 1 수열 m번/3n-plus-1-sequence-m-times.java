@@ -20,7 +20,7 @@ public class Main {
                     break;
                 }
             }
-        System.out.print(cnt);
+        System.out.println(cnt);
         }
         
         
