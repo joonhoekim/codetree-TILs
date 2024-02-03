@@ -10,20 +10,22 @@ public class Main {
     for(int i=0; i<3; i++) {
         char sym = sc.next().charAt(0);
         int tem = sc.nextInt();
+        int type;
 
         if(sym=='Y' && tem>=37) {
             //A
-            situ[0]++;
+            type=0;
         } else if(sym=='N' && tem>=37) {
             //B
-            situ[1]++;
+            type=1;
         } else if(sym=='Y') {
             //C
-            situ[2]++;
+            type=2;
         } else {
             //D
-            situ[3]++;
+            type=3;
         }
+        situ[type]++;
     }
     for(int i=0;i<situ.length;i++){
         System.out.print(situ[i]+" ");
