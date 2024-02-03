@@ -9,7 +9,7 @@ public class Main {
             if (input == 0){
                 break;
             }
-            score_10[input/10 - 1]++;
+            score_10[input/10 -1]++;
         }
 
         for(int i=0; i<10; i++) {
