@@ -19,14 +19,18 @@ public class Main {
                 int a = sc.nextInt();
                 int idx = 0;
                 int count = 0;
+                int firstIdx=0;
                 for(int j=0;j<n;j++){
                     if(arr[j]==a){
+                        if(firstIdx==0){
+                            firstIdx=j+1;
+                        }
                         idx = j+1;
                         count ++;
                     }
                 }
                 if(count>1) {
-                    System.out.print(a);
+                    System.out.println(firstIdx+1);
                 } else {
                     System.out.println(idx);
                 }
