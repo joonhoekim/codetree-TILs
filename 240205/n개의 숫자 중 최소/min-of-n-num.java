@@ -17,12 +17,12 @@ public class Main {
 
         int count = 0;
         for(int i=0; i<n; i++){
-            if(arr[i]==minVal) {
-                count++;
-            }
-            else if(arr[i]<minVal){
+            
+            if(arr[i]<minVal){
                 minVal = arr[i];
                 count = 1;
+            } else if(arr[i]==minVal) {
+                count++;
             }
             
         }
