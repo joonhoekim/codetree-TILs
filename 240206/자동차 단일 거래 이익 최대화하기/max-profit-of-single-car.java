@@ -8,18 +8,19 @@ public class Main {
             arr[i]=sc.nextInt();
         }
 
-        int maxP = 0;
-        for(int i=0; i<n; i++) {
-            //각 연도에서 앞 년도에 대한 최대 이익 구함
-            for(int j=i+1; j<n; j++) {
-                int p = arr[j]-arr[i];
-                if(p>maxP) {
-                    maxP=p;
-                }
+        int maxProfit=0;
+        int minPrice=arr[0];
+        for(int i=0; i<n; i++){
+            if(arr[i]<minPrice) {
+                minPrice=arr[i];
+            }
+            
+            int currProfit = arr[i] - minPrice;
+            
+            if(currProfit>maxProfit) {
+                maxProfit=currProfit;
             }
         }
-
-        System.out.print(maxP);
-        
+        System.out.print(maxProfit);
     }
 }
