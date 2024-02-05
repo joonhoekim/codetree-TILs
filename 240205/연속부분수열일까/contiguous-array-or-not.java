@@ -15,7 +15,7 @@ public class Main {
             arr2[i]=sc.nextInt();
         }
 
-        boolean isFound = false;
+        //boolean isFound = false;
         for(int i=0;i<n1-n2+1;i++) {
             if(arr1[i]==arr2[0]){
                 boolean notMatched = false;
@@ -26,16 +26,16 @@ public class Main {
                     }
                 }
                 if(!notMatched) {
-                    isFound=true;
+                    //찾으면 여기서 끝내라!!
+                    //isFound=true;
+                    System.out.print("Yes");
+                    return;
                 }
             }
         }
 
-        if(isFound) {
-            System.out.print("Yes");
-        } else {
-            System.out.print("No");
-        }
+        System.out.print("No");
+        
 
     }
 }
