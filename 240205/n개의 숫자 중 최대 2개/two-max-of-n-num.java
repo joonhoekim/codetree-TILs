@@ -11,7 +11,7 @@ public class Main {
 
         //int max = arr[0];
         int max1 = arr[0];
-        int max2 = arr[0];
+        int max2 = Integer.MIN_VALUE;
         for(int i=0; i<size; i++) {
             if(arr[i]>max1) {
                 max1 = arr[i];
