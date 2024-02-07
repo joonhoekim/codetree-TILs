@@ -46,8 +46,11 @@ public class Main {
       i++;
       j--;
 
-      if (i >= n || j < 0) {
-        i = iMem;
+      if (jMem == m) {
+        i = ++iMem;
+        jMem--;
+      } else if (i >= n || j < 0) {
+        i = 0;
         j = ++jMem;
       }
 
