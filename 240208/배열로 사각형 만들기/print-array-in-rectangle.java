@@ -7,11 +7,8 @@ public class Main {
         int[][] arr=new int[n][n];
         int count = 1;
         for(int i=0; i<n; i++) {
-            for(int j=0; j<n; j++) {
-                if(i==0 || j==0){
-                    arr[i][j] = 1;
-                }
-            }
+            arr[0][i] = 1;
+            arr[i][0] = 1;
         }
 
         for(int i=1; i<n; i++) {
