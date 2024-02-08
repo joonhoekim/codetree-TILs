@@ -11,11 +11,15 @@ public class Main {
 
         char target = sc.next().charAt(0);
 
+        boolean found = false;
         for(int i=0; i<n; i++){
             if(arr[i].charAt(arr[i].length()-1)==target){
                 System.out.println(arr[i]);
+                found = true;
             }
         }
-        
+        if(!found){
+            System.out.println("None");
+        }
     }
 }
