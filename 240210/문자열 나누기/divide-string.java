@@ -7,15 +7,13 @@ public class Main {
         for(int i=0;i<n;i++){
             str+=sc.next();
         }
-        for(int i=0;i<=str.length()/5;i++){
-            for(int j=0;j<5;j++){
-                int targetIdx=5*i+j;
-                if(targetIdx==str.length()){
-                    break;
-                }
-                System.out.print(str.charAt(targetIdx));
+        
+        for(int i=0;i<str.length();i++){
+            System.out.print(str.charAt(i));
+            if((i+1)%5==0) {
+                System.out.println("");
             }
-            System.out.println("");
         }
+
     }
 }
