@@ -16,10 +16,10 @@ public class Main {
         //     System.out.print("false");
         // }
 
-        boolean b = false;
+        boolean b = true;
         for(int i=0;i<t1.length();i++){
-            if(t1.charAt(i)==t2.charAt(i)){
-                b=true;
+            if(t1.charAt(i)!=t2.charAt(i)){
+                b=false;
             }
         }
 
