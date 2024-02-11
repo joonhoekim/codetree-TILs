@@ -10,7 +10,7 @@ public class Main {
 
         for(int i=0;i<len;i++){
             
-            int delimiter = -1;
+            int delimiter = inputs[i].length();
             char[] cArr = inputs[i].toCharArray();
             for(int j=0;j<cArr.length;j++) {
                 if(!('0' <= cArr[j] && cArr[j]<='9')) {
@@ -18,9 +18,7 @@ public class Main {
                 }
             }
 
-            if(delimiter!=-1){
                 sum += Integer.parseInt(inputs[i].substring(0,delimiter));
-            }
         }
 
         System.out.print(sum);
