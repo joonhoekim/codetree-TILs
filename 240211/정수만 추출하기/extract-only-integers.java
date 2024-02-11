@@ -15,6 +15,7 @@ public class Main {
             for(int j=0;j<cArr.length;j++) {
                 if(!('0' <= cArr[j] && cArr[j]<='9')) {
                     delimiter = j;
+                    break;
                 }
             }
 
