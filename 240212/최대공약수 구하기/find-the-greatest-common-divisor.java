@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
 
     static int getGcd(int n, int m){ //gcd is greatest common divider
-        int smaller = n>m?m:n;
+        int smaller = Math.min(n,m);//n>m?m:n;
         for(int i=smaller; i>=1; i--) {
             if(n%i==0 && m%i==0) {
                 return i;
