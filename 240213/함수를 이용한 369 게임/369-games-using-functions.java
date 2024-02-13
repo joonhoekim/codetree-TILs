@@ -17,18 +17,10 @@ public class Main {
         return false;
     }
 
-    static boolean mulOf3(int i) {
-        if(i%3==0){
-            return true;
-        } else{
-            return false;
-        }
-    }
-
     static int test369(int a, int b){
         int count=0;
         for(int i=a;i<=b;i++){
-            if(have369(i) || mulOf3(i)) {
+            if(have369(i) || i%3==0) {
                 count++;
             }
         }
