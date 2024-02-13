@@ -3,13 +3,18 @@ import java.util.Scanner;
 public class Main {
 
     static boolean have369(int i) {
-        if(String.valueOf(i).contains("3") ||
-        String.valueOf(i).contains("6") ||
-        String.valueOf(i).contains("9")) {
-            return true;
-        } else {
-            return false;
+        while (i>0) {
+            int check = i%10;
+            if(check==3) {
+                return true;
+            } else if(check==6) {
+                return true;
+            } else if(check==9) {
+                return true;
+            }
+            i=i/10;
         }
+        return false;
     }
 
     static boolean mulOf3(int i) {
