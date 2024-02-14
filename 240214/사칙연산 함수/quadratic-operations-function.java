@@ -20,7 +20,7 @@ public class Main {
             case '/': return a/c;
         }
         System.out.println("False");
-        System.exit(-1);
-        return -1;
+        System.exit(0);
+        return 0;
     }
 }
