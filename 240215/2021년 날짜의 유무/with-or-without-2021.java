@@ -13,7 +13,12 @@ public class Main {
     }
 
     static boolean valMD(int M,int D){
+        if(M>12) {
+            return false;
+        }
+        
         int[] maxDays = {31,28,31,30,31,30,31,31,30,31,30,31};
+        
         if(maxDays[M-1]<D) {
             return false;
         } else {
