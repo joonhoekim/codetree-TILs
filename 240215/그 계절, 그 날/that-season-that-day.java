@@ -14,11 +14,11 @@ public class Main {
     }
 
     static String season(int M) {
-        if(3<=M && 5<=M) {
+        if(3<=M && M<=5) {
             return "Spring";
-        } else if(6<=M && 8<=M) {
+        } else if(6<=M && M<=8) {
             return "Summer";
-        } else if(9<=M && 11<=M) {
+        } else if(9<=M && M<=11) {
             return "Fall";
         } else {
             return "Winter";
