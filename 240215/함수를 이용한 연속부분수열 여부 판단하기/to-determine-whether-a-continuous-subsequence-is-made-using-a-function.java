@@ -22,15 +22,15 @@ public class Main {
     }
 
     static boolean isSubsequance(int[] subArr, int[] superArr) {
-        for(int i=0; i<superArr.length - subArr.length; i++) {
+        for(int i=0; i<=superArr.length - subArr.length; i++) {
             boolean isSub = true;
             for(int j=0; j<subArr.length; j++) {
                 if(superArr[i+j] != subArr[j]){
                     isSub=false;
                     break;
                 }
-                if(isSub) return true;
             }
+            if(isSub) return true;
         }
         return false;
     }
