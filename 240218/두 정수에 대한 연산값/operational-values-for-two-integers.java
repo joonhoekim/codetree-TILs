@@ -1,25 +1,30 @@
 import java.util.Scanner;
 
+class IntWrapper{
+    int value;
+    public IntWrapper(int value){
+        this.value = value;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int a = sc.nextInt();
-        int b = sc.nextInt();
+        IntWrapper a = new IntWrapper(sc.nextInt());
+        IntWrapper b = new IntWrapper(sc.nextInt());
 
         calc(a,b);
+        System.out.print(a.value+" "+b.value);
     }
 
-    static void calc(int a, int b){
-        if(a>b) {
-            a+=25;
-            b*=2;
-            System.out.print(a+" "+b);
-
+    static void calc(IntWrapper a, IntWrapper b){
+        if(a.value>b.value) {
+            a.value+=25;
+            b.value*=2;
         } else {
-            b+=25;
-            a*=2;
-            System.out.print(a+" "+b);
+            b.value+=25;
+            a.value*=2;
         }
     }
 }
