@@ -12,6 +12,7 @@ public class Main {
     }
 
     static boolean DupChar(String str) {
+        int cnt = 0;
         int[] counter = new int[26];
         for(int i=0;i<str.length();i++){
             int idx = str.charAt(i) - 'a';
@@ -19,7 +20,11 @@ public class Main {
         }
 
         for(int i=0;i<counter.length;i++){
-            if(counter[i]>1) {
+            if(counter[i]>=1) {
+                cnt++;
+            }
+
+            if (cnt>1) {
                 return true;
             }
         }
