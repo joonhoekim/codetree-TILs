@@ -3,20 +3,27 @@ import java.util.Scanner;
 public class Main {
 
 
-    static void recursiveArray(int a, int b) {
-        if(b==0) {
-            System.out.println("");
+    static void asc(int n) {
+        if(n==0) {
             return;
         }
-        System.out.print(a + " ");
-        recursiveArray(a+1, b-1);
-        System.out.print(a + " ");
+        asc(n-1);
+        System.out.print(n+" ");
+    }
 
+    static void desc(int n) {
+        if(n==0) {
+            return;
+        }
+        System.out.print(n+" ");
+        desc(n-1);
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        recursiveArray(1,n);
+        asc(n);
+        System.out.println("");
+        desc(n);
     }
 }
