@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
     static int seriesSum(int n){
         if(n==1) {
@@ -6,6 +8,8 @@ public class Main {
         return seriesSum(n-1) + n;
     }
     public static void main(String[] args) {
-        System.out.print(seriesSum(100));
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.print(seriesSum(n));
     }
 }
