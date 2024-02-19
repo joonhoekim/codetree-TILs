@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.Arrays;
-import java.util.Collections;
+//import java.util.Collections;
 
 
 public class Main {
@@ -22,10 +22,14 @@ public class Main {
         }
     }
     static void desc(int[] arr) {
-        Integer[] arr2 = Arrays.stream(arr).boxed().toArray(Integer[]::new);
-        Arrays.sort(arr2, Collections.reverseOrder());
-        for(int i=0;i<arr2.length;i++){
-            System.out.print(arr2[i]+" ");
+        //Integer[] arr2 = Arrays.stream(arr).boxed().toArray(Integer[]::new);
+        //Arrays.sort(arr2, Collections.reverseOrder());
+        
+        //콜바이레퍼런스니까 다시 정렬할 필요 없음
+        //Arrays.sort(arr);
+        //그냥 오름차순 정렬하고 거꾸로 출력하는게 낫겠다....
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[arr.length-i-1]+" ");
         }
     }
     
