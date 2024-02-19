@@ -18,7 +18,6 @@ public class Main {
                 if(arr[j] < arr[j+1]) {
                     cnt++;
                 } else {
-                    break;
                 }
             }
             lenArr[i] = cnt;
