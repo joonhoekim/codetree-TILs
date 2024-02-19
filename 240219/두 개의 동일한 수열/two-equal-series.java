@@ -20,7 +20,7 @@ public class Main {
         for(int i=0;i<n;i++){
             if(arr1[i]!=arr2[i]){
                 System.out.print("No");
-                break;
+                return;
             }
         }
 
