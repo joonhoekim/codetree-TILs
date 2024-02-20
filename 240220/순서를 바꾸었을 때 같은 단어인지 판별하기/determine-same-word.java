@@ -15,7 +15,7 @@ public class Main {
     Arrays.sort(str1);
     Arrays.sort(str2);
 
-    if (Arrays.toString(str1).equals(Arrays.toString(str2))) {
+    if (new String(str1).equals(new String(str2))) {
       bw.write("Yes");
     } else {
       bw.write("No");
@@ -24,7 +24,6 @@ public class Main {
     bw.flush();
     bw.close();
     br.close();
-    return;
 
   }
 }
