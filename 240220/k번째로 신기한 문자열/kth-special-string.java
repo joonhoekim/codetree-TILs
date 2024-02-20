@@ -16,21 +16,22 @@ public class Main {
     int k = Integer.parseInt(st.nextToken());
     String T = st.nextToken();
     String[] arr = new String[n];
-    
-    for(int i=0;i<n;i++){
-        arr[i] = br.readLine();
+
+    for (int i = 0; i < n; i++) {
+      arr[i] = br.readLine();
     }
 
     Arrays.sort(arr);
 
-    int cnt=0;
-    for(int i=0;i<n;i++){
-        if(arr[i].substring(0,T.length()).equals(T)){
-            if(++cnt==k) {
-                bw.write(arr[i]);
-                break;
-            }
+    int cnt = 0;
+    for (int i = 0; i < n; i++) {
+      if (arr[i].startsWith(T)) {
+        if (++cnt == k) {
+          bw.write(arr[i]);
+          bw.flush();
+          break;
         }
+      }
     }
 
     bw.flush();
