@@ -18,7 +18,7 @@ class Coord implements Comparator<Coord> {
 
     @Override
     public int compare(Coord a, Coord b) {
-        return ((a.x+ a.y) - (b.x+b.y));
+        return ((Math.abs(a.x)+ Math.abs(a.y)) - (Math.abs(b.x)+Math.abs(b.y)));
     }
 }
 
@@ -38,7 +38,7 @@ public class Main {
         }
 
         Arrays.sort(coords, (a,b) -> {
-            return ((a.x+ a.y) - (b.x+b.y)); 
+            return ((Math.abs(a.x)+ Math.abs(a.y)) - (Math.abs(b.x)+Math.abs(b.y)));
         });
 
         for(Coord coord : coords) {
