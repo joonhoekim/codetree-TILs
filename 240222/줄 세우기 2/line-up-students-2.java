@@ -33,8 +33,6 @@ public class Main {
         Arrays.sort(students, (a,b) -> {
             if(a.h != b.h)
                 return a.h-b.h;
-            if(a.w != b.w)
-                return b.w-a.w;
             return b.w-a.w;
         });
 
