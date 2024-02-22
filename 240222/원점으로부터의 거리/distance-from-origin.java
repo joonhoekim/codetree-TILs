@@ -20,6 +20,10 @@ class Coord implements Comparator<Coord> {
     public int compare(Coord a, Coord b) {
         return ((Math.abs(a.x)+ Math.abs(a.y)) - (Math.abs(b.x)+Math.abs(b.y)));
     }
+
+    static public int getDistManhattan(Coord a, Coord b) {
+        return Math.abs(a.x-b.x) + Math.abs(a.y-b.y);
+    }
 }
 
 public class Main {
@@ -37,8 +41,10 @@ public class Main {
             coords[i] = new Coord(x,y,i+1);
         }
 
+        
+
         Arrays.sort(coords, (a,b) -> {
-            return ((Math.abs(a.x)+ Math.abs(a.y)) - (Math.abs(b.x)+Math.abs(b.y)));
+            return a.getDistManhattan(a,new Coord(0,0,0)) - b.getDistManhattan(b,new Coord(0,0,0));
         });
 
         for(Coord coord : coords) {
