@@ -22,6 +22,10 @@ public class Main {
         int m2 = sc.nextInt();
         int d2 = sc.nextInt();
 
-        System.out.print(dateToDays(m2,d2)-dateToDays(m1,d1));
+        int diff = dateToDays(m2,d2)-dateToDays(m1,d1);
+        diff = diff==0?1:diff;
+
+
+        System.out.print(diff);
     }
 }
