@@ -15,6 +15,7 @@ public class Main {
         int minute = sc.nextInt();
 
         long diff = dateToMin(day,hour,minute) - dateToMin(11,11,11);
+        diff = diff<0 ? -1 : diff;
         System.out.print(diff);
     }
 }
