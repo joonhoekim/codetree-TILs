@@ -5,7 +5,7 @@ public class Main {
 
     static int dateToDays(int m, int d) {
         int monthToDay = 0;
-        for(int i=1; i<m-1; i++) { //이전달까지는 그냥 더함
+        for(int i=1; i<m; i++) {
             monthToDay+=numOfDays[i];
         }
         
@@ -22,8 +22,8 @@ public class Main {
         int m2 = sc.nextInt();
         int d2 = sc.nextInt();
 
-        int diff = dateToDays(m2,d2)-dateToDays(m1,d1);
-        diff = diff==0?1:diff;
+        int diff = dateToDays(m2,d2)-dateToDays(m1,d1)+1;
+        //diff = diff==0?1:diff;
 
 
         System.out.print(diff);
