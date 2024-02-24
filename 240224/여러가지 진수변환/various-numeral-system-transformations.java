@@ -11,10 +11,10 @@ public class Main {
             return "0";
         }
         while(true) {
-            if(base10 == 1) {
-                sb.append(1);
+            if(base10 == 0) {
                 return sb.reverse().toString();
-            } else if (base10 == 0) {
+            } else if (base10 < base) {
+                sb.append(base10);
                 return sb.reverse().toString();
             }
 
