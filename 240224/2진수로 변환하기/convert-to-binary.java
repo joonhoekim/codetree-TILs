@@ -5,7 +5,9 @@ public class Main {
     static String toBinary(int n){
         // new int[100] 같은 식으로 푸는 것보다 SB 쓰는 게 좋을 것 같다.
         StringBuilder sb = new StringBuilder();
-
+        if(n==0) {
+            return "0";
+        }
         while(true) {
             if(n==1) {
                 sb.append(n);
