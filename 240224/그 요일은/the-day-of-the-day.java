@@ -46,10 +46,9 @@ class Date{
     //2. 남은 날짜(%7)가 요일 인덱스 이하인 경우라면 1번을 추가한다.
     public int countNameOfDay(Date date, String nameOfDay) {
         int sum = this.countWeek(date);
-        if(this.getDayDiff(date)%7 <= getNameOfDayIdx(nameOfDay)) {
+        if(this.getDayDiff(date)%7 >= getNameOfDayIdx(nameOfDay)) {
             sum++;
         }
-
         return sum;
     }
     
