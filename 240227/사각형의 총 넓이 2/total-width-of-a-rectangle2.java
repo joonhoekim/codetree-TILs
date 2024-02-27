@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
     static int offset = 100;
     static int offset(int n) {
-        return n+offset-1; //to make idx, minus 1.
+        return n+offset; //to make idx, minus 1.
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
