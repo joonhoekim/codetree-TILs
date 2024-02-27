@@ -7,7 +7,7 @@ public class Main {
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int boardSize = 100+offset+1;
+        int boardSize = 100+offset+2;
         int[][] board = new int[boardSize][boardSize];
 
         int n = sc.nextInt();
