@@ -13,15 +13,15 @@ public class Main {
             char direction = sc.next().charAt(0);
 
             if(direction == 'R') {
-                for(int j=cursor; j<cursor+distance; j++) {
-                    arr[j]=1; //1=검은색
+                while(distance-->0) {
+                    arr[cursor]=1;
+                    if(distance>0) cursor--;
                 }
-                cursor = cursor+distance-1;
             } else if(direction == 'L') {
-                for(int j=cursor; j>cursor-distance; j--) {
-                    arr[j]=2; //2=흰색
+                while(distance-->0) {
+                    arr[cursor]=2;
+                    if(distance>0) cursor++;
                 }
-                cursor = cursor-distance+1;
             }
         }
 
