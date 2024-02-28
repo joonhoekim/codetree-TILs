@@ -51,7 +51,7 @@ public class Main {
                 }
             }
         }
-        return null;
+        return new XY(-1,-1);
     }
 
     static XY getMaxXY(int value){
@@ -62,7 +62,7 @@ public class Main {
                 }
             }
         }
-        return null;
+        return new XY(-1,-1);
     }
 
     static int countValue(int value) {
