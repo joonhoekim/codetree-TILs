@@ -37,8 +37,13 @@ public class Main {
 
         XY minXY = getMinXY(1);
         XY maxXY = getMaxXY(1);
+        if(minXY == null || maxXY==null) {
+            System.out.print(0);
+            return;
+        }
+        
 
-        int area = (maxXY.x-minXY.x+1) * (maxXY.y-minXY.y+1);
+        int area = (maxXY.x-minXY.x+1) * (maxXY.y-minXY.y);
         System.out.print(area);
 
     }
@@ -51,7 +56,7 @@ public class Main {
                 }
             }
         }
-        return new XY(-1,-1);
+        return null;
     }
 
     static XY getMaxXY(int value){
@@ -62,7 +67,7 @@ public class Main {
                 }
             }
         }
-        return new XY(-1,-1);
+        return null;
     }
 
     static int countValue(int value) {
