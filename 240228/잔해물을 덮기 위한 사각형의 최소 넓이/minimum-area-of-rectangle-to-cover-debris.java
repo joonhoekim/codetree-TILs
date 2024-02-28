@@ -11,6 +11,12 @@ class XY {
         this.x = x;
         this.y = y;
     }
+
+    XY doOffset(int offset) {
+        this.x+=offset;
+        this.y+=offset;
+        return this;
+    }
 }
 
 public class Main {
@@ -23,85 +29,59 @@ public class Main {
         //int n = sc.nextInt();
         int n = 2;
 
+
         for(int i=1; i<=n; i++) {
             //int value = 1;
-            int x1=sc.nextInt();
-            int y1=sc.nextInt();
-            int x2=sc.nextInt();
-            int y2=sc.nextInt();
+            int x=sc.nextInt();
+            int y=sc.nextInt();
+            XY minXY=new XY(x,y);
+            
+            x=sc.nextInt();
+            y=sc.nextInt();
+            XY maxXY=new XY(x,y);
 
-            //addRect(...)
-            setRect(i, x1, y1, x2, y2);
-            //value 1 이면 남는 것
+            setRect(i, minXY.doOffset(offset),maxXY.doOffset(offset));
         }
 
-        XY minXY = getMinXY(1);
-        XY maxXY = getMaxXY(1);
-        if(minXY == null || maxXY==null) {
-            System.out.print(0);
+        XY max = maxXY(1);
+        XY min = minXY(1);
+        if(max.x == -1) {
+            System.out.println(0);
             return;
         }
-        
-
-        int area = (maxXY.x-minXY.x+1) * (maxXY.y-minXY.y);
+        int area = (max.x-min.x+1) * (max.y - min.y+1);
         System.out.print(area);
-
     }
 
-    static XY getMinXY(int value){
+    static void setRect(int value, XY minXY, XY maxXY) {
+        for(int x=minXY.x; x<maxXY.x; x++) {
+            for(int y=minXY.y; y<maxXY.y; y++) {
+                board[x][y] = value;
+            }
+        }
+    }
+
+    static XY minXY(int value) {
         for(int x=0; x<boardSize; x++) {
             for(int y=0; y<boardSize; y++) {
-                if(board[x][y]==value) {
+                if(board[x][y] == value) {
                     return new XY(x,y);
                 }
             }
         }
-        return null;
+        //찾지 못한 경우
+        return new XY(-1, -1);
     }
 
-    static XY getMaxXY(int value){
+    static XY maxXY(int value) {
         for(int x=boardSize-1; x>=0; x--) {
             for(int y=boardSize-1; y>=0; y--) {
-                if(board[x][y]==value) {
+                if(board[x][y] == value) {
                     return new XY(x,y);
-                }
+                }           
             }
         }
-        return null;
-    }
-
-    static int countValue(int value) {
-        //엣지: int 오버플로 없음(10^6 < 10^9)
-        int cnt=0;
-        for(int x=0; x<boardSize; x++) {
-            for(int y=0; y<boardSize; y++) {
-                if(board[x][y]==value) {
-                    cnt++;
-                }
-            }
-        }
-        return cnt;
-    }
-
-
-    static int countNonzero() {
-        //엣지: int 오버플로 없음(10^6 < 10^9)
-        int cnt=0;
-        for(int x=0; x<boardSize; x++) {
-            for(int y=0; y<boardSize; y++) {
-                if(board[x][y]!=0) {
-                    cnt++;
-                }
-            }
-        }
-        return cnt;
-    }
-
-    static void setRect(int value, int x1, int y1, int x2, int y2) {
-        for(int x=x1+offset; x<x2+offset; x++) {
-            for(int y=y1+offset; y<y2+offset; y++) {
-                board[x][y]=value;
-            }
-        }
+        //찾지 못한 경우
+        return new XY(-1, -1);
     }
 }
