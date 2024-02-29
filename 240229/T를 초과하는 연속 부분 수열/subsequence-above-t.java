@@ -20,15 +20,13 @@ public class Main {
                 continue;
             }
 
-            if(currentNumber>t && currentNumber>prevNumber) {
+            if(prevNumber>t && currentNumber>t && currentNumber>prevNumber) {
                 max = Math.max(++count, max);
             } else {
-                count = 0;
+                count = 1;
             }
             prevNumber = currentNumber;
         }
-
-        
         System.out.print(max);
     }
 }
