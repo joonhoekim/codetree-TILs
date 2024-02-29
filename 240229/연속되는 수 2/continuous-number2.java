@@ -19,7 +19,7 @@ public class Main {
             // 2. i==0 인 경우? 무조건 길이 1 시작
             // 7 7 7 2
             if(arr[i]==arr[i+1]) {
-                cnt++;
+                ++cnt;
                 if(max<=cnt) max = cnt;
             } else {
                 cnt = 1;
