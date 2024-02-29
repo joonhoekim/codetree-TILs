@@ -10,12 +10,8 @@ public class Main {
         int max = 1;
         for(int i=0;i<n;i++) {
             currentNumber=sc.nextInt();
-            if(i==0) {
-                prevNumber = currentNumber;
-                continue;
-            }
-
-            if(prevNumber<currentNumber) {
+            
+            if(i==0 || prevNumber<currentNumber) {
                 max = Math.max(++count,max);
             } else {
                 count = 1;
