@@ -21,10 +21,9 @@ public class Main {
             }
 
             if(currentNumber>t && currentNumber>prevNumber) {
-                count++;
-                max = Math.max(count, max);
+                max = Math.max(++count, max);
             } else {
-                count = 1;
+                count = 0;
             }
             prevNumber = currentNumber;
         }
