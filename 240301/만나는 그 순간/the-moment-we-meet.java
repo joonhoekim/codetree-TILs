@@ -47,20 +47,15 @@ public class Main {
 
    static int getFirstEncounter(int[] arrA, int[] arrB) {
     int[] encounterArr = new int[arrA.length];
-    int cur = 0;
+    int min = Integer.MAX_VALUE;
     for(int i=0; i<arrA.length; i++) {
         if(arrA[i] != 0 && arrB[i] != 0 && arrA[i]==arrB[i]) {
-            encounterArr[cur++] = arrA[i];
+            min = Math.min(arrA[i], min);
         }
     }
-
-    Arrays.sort(encounterArr);
-    for(int i=0; i<encounterArr.length; i++) {
-        if(encounterArr[i]!=0) {
-            return encounterArr[i];
-        }
+    if(min == Integer.MAX_VALUE) {
+        return -1;//못 찾은 경우 -1
     }
-    
-    return -1; //못 찾은 경우 -1
+    return min; 
    }
 }
