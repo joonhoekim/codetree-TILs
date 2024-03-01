@@ -15,7 +15,6 @@ public class Main {
         }
 
         int count = 0;
-        if(arr[0]>t) count++;
         for(int i=1; i<n-1; i++) {
 
             if(arr[i]>t && arr[i+1] > arr[i]) {
