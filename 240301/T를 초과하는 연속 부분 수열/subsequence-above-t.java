@@ -7,25 +7,20 @@ public class Main {
 
         int n = sc.nextInt();
         int t = sc.nextInt();
-        int[] arr = new int[n];
+        // int previous = 0;
+        int current = 0;
         int max = 0;
-
-        for (int i=0;i<n;i++) {
-          arr[i]=sc.nextInt();  
-        }
-
         int count = 0;
-        for(int i=0; i<n-1; i++) {
-            if(arr[i]>t && arr[i+1]>t && arr[i+1] > arr[i]) {
-                if(count==0){
-                    count=1;
-                }
-                max = Math.max(max, ++count);
+
+        //더 커져야 한다는 건 조건이 아니었네....
+        for (int i=0; i<n; i++) {
+            current = sc.nextInt();
+            if(current>t) {
+                max = Math.max(max,++count);
             } else {
-                count = 0;
+                count=0;
             }
         }
-
         System.out.print(max);
     }
 }
