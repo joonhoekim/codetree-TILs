@@ -21,9 +21,7 @@ public class Main {
         exec(arrB, m, offset);
 
         int ans = getFirstEncounter(arrA, arrB);
-        if (ans==0) {
-            ans = -1;
-        }
+        
         System.out.print(ans);
    }
 
@@ -36,12 +34,12 @@ public class Main {
         
         if(dir == 'L') {
             while(dist-->0) {
-                arr[cur--]=time++; 
+                arr[--cur]=++time; 
             }
 
         } else if(dir == 'R') {
             while(dist-->0) {
-                arr[cur++]=time++; 
+                arr[++cur]=++time; 
             }
         }
       }
@@ -51,7 +49,7 @@ public class Main {
     int[] encounterArr = new int[arrA.length];
     int cur = 0;
     for(int i=0; i<arrA.length; i++) {
-        if(arrA[i]==arrB[i]) {
+        if(arrA[i] != 0 && arrB[i] != 0 && arrA[i]==arrB[i]) {
             encounterArr[cur++] = arrA[i];
         }
     }
@@ -62,7 +60,7 @@ public class Main {
             return encounterArr[i];
         }
     }
-
-    return encounterArr[0]; //못찾은 경우 0이 나옴
+    
+    return -1; //못 찾은 경우 -1
    }
 }
