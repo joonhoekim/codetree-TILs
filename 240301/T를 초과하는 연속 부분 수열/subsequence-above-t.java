@@ -19,12 +19,12 @@ public class Main {
         for(int i=1; i<n-1; i++) {
 
             if(arr[i]>t && arr[i+1] > arr[i]) {
-                if(count == 1) {
-                    count = 2;
+                if(count==0){
+                    count=1;
                 }
                 max = Math.max(max, ++count);
             } else {
-                count = 1;
+                count = 0;
             }
         }
 
