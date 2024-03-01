@@ -33,12 +33,12 @@ public class Main {
         int dist = sc.nextInt();
         
         if(dir == 'L') {
-            while(dist-->0) {
+            while(--dist>=0) {
                 arr[--cur]=++time; 
             }
 
         } else if(dir == 'R') {
-            while(dist-->0) {
+            while(--dist>=0) {
                 arr[++cur]=++time; 
             }
         }
