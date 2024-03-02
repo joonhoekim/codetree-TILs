@@ -22,9 +22,9 @@ public class Main {
         int[] timetableA = new int[maxSaving];
         int[] timetableB = new int[maxSaving];
 
-        exec(timetableA, n);
+        int searchRange = exec(timetableA, n);
         exec(timetableB, m);
-        System.out.print(getFirstEncounter(timetableA, timetableB, minSaving));
+        System.out.print(getFirstEncounter(timetableA, timetableB, searchRange));
 
         
     }
@@ -38,7 +38,7 @@ public class Main {
         return -1;
     }
 
-    static void exec(int[] timetable, int numberOfLines) {
+    static int exec(int[] timetable, int numberOfLines) {
 
         int time = 0;
         int position = 0;
@@ -57,5 +57,7 @@ public class Main {
                 }
             }
         }
+
+        return time;
     }
 }
