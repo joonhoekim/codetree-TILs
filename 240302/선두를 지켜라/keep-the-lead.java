@@ -47,7 +47,7 @@ public class Main {
         continue;
       }
 
-      if(current == 0 && prev ==0) {
+      if(timeArrA[i] == 0 && timeArrB[i] ==0) {
         break;
       }
 
