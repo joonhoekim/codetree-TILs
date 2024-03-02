@@ -37,8 +37,8 @@ public class Main {
     int prev = 0;
     int current = 0;
     int count = 0;
-    for(int i=0; i<size; i++) {
-      if (i==0) {
+    for(int i=1; i<size; i++) {
+      if (i==1) {
         if(timeArrA[i] > timeArrB[i]) {
           prev = 1;
         } else {
@@ -62,7 +62,7 @@ public class Main {
       }
       prev=current;
 
-      
+
     }
 
     System.out.print(count);
