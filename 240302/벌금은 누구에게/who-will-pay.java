@@ -8,21 +8,13 @@ public class Main {
         int m = sc.nextInt(); // number of record
         int k = sc.nextInt(); // criteria (equal to OR greater than)
 
-        int[][] penaltyBoard = new int [n][k]; //row = each student, col = penalty rec
+        int[] penaltyBoardThatIdxIsStdNo = new int [n+1]; //row = each student, col = penalty rec
         for(int i=0; i<m; i++) {
-            int studentNo = sc.nextInt() - 1;
-            for(int j=0; j<k; j++) {
-                if(penaltyBoard[studentNo][j] == 0) {
-                    penaltyBoard[studentNo][j] = 1;
+            int studentNo = sc.nextInt();
 
-                    if(j==k-1) {
-                        System.out.print(studentNo + 1);
-                        return;
-                    }
-                    break; //get penalty = 1 
-                }
-
-                
+            if(++penaltyBoardThatIdxIsStdNo[studentNo] == k) {
+                System.out.print(studentNo);
+                return;
             }
         }
 
