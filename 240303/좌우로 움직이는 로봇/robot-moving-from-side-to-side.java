@@ -40,14 +40,18 @@ public class Main {
     static void countEncounter(int[] a, int[] b, int searchRange) {
         //encounter condition
         //1. each position is not same.
+        //2. 기록 끝난 부분에서 0으로 변하는데 이 때 만나는 것으로 카운트되지 않도록 주의
         int count=0;
         for(int i=1; i<searchRange; i++) {
+            if( (a[i+1] == 0 && a[i] == 0) && (b[i+1] == 0 && b[i] == 0) ) {
+                break;
+            }
+            
             if(a[i-1] != b[i-1]) {
                 if(a[i] == b[i]) {
                     count++;
                 }
             }
-        }
         
         System.out.print(count);
     }
