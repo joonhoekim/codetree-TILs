@@ -48,10 +48,37 @@ public class Main {
 
         //2.simulation
         for(int i=0; i<t; i++) {
-            if( devs[handshakings[i].x-1].isInfected && devs[handshakings[i].x-1].spreadCount<=k) {
-                devs[handshakings[i].y-1].isInfected = true;
-                devs[handshakings[i].x-1].spreadCount++;
-            } 
+
+            //일단 감염된 사람을 발견하면 SpreadCount 를 확인한다.
+            //활성 상태라면 상대방도 감염된 상태인지 확인해보고
+            // - 감염된 상태라면 둘 다 spreacount++
+            // - 비감염 상태라면 전파 횟수에 따라 상대방도 감염시키고 전파 횟수를 늘린다.
+            
+            
+            if( devs[handshakings[i].x-1].isInfected ) {
+                if( devs[handshakings[i].x-1].spreadCount<=k ) {
+                    if( devs[handshakings[i].y-1].isInfected ) {
+                        devs[handshakings[i].x-1].spreadCount++;
+                        devs[handshakings[i].y-1].spreadCount++;
+                    } else {
+                        devs[handshakings[i].y-1].isInfected = true;
+                        devs[handshakings[i].x-1].spreadCount++;
+                    }
+                }
+            }
+            
+            if( devs[handshakings[i].y-1].isInfected ) {
+                if( devs[handshakings[i].y-1].spreadCount<=k ) {
+                    if( devs[handshakings[i].x-1].isInfected ) {
+                        devs[handshakings[i].x-1].spreadCount++;
+                        devs[handshakings[i].y-1].spreadCount++;
+                    } else {
+                        devs[handshakings[i].x-1].isInfected = true;
+                        devs[handshakings[i].y-1].spreadCount++;
+                    }
+                }
+            }
+            
         }
 
         //3.print
