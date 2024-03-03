@@ -53,6 +53,7 @@ public class Main {
                 }
             }
         
-        System.out.print(count);
+            System.out.print(count);
+        }
     }
 }
