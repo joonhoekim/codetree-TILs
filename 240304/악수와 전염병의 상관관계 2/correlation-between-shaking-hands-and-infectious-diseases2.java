@@ -49,11 +49,8 @@ public class Main {
         //2.simulation
         for(int i=0; i<t; i++) {
 
-            //일단 감염된 사람을 발견하면 SpreadCount 를 확인한다.
-            //활성 상태라면 상대방도 감염된 상태인지 확인해보고
-            // - 감염된 상태라면 둘 다 spreacount++
-            // - 비감염 상태라면 전파 횟수에 따라 상대방도 감염시키고 전파 횟수를 늘린다.
-            
+            // 처음엔 아래 조건보다 단순하게 x, y 각각에 대해서 수행했는데
+            // 그렇게하니까 전파 횟수를 두번 증가시키는 로직 오류가 발생..
             
             if( devs[handshakings[i].x-1].isInfected ) {
                 if( devs[handshakings[i].x-1].spreadCount<=k ) {
@@ -63,22 +60,14 @@ public class Main {
                     } else {
                         devs[handshakings[i].y-1].isInfected = true;
                         devs[handshakings[i].x-1].spreadCount++;
+                        
                     }
-                }
-            }
-            
-            if( devs[handshakings[i].y-1].isInfected ) {
-                if( devs[handshakings[i].y-1].spreadCount<=k ) {
-                    if( devs[handshakings[i].x-1].isInfected ) {
-                        devs[handshakings[i].x-1].spreadCount++;
-                        devs[handshakings[i].y-1].spreadCount++;
-                    } else {
-                        devs[handshakings[i].x-1].isInfected = true;
+                } else {
+                    if( devs[handshakings[i].y-1].isInfected ) {
                         devs[handshakings[i].y-1].spreadCount++;
                     }
                 }
             }
-            
         }
 
         //3.print
