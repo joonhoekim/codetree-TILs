@@ -6,7 +6,7 @@ import java.util.*;
 public class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        int maxRange=1_000_000;
+        int maxRange=1_000_001;
         int[] robotA = new int[maxRange];
         int[] robotB = new int[maxRange];
 
