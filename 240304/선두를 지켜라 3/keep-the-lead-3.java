@@ -52,6 +52,8 @@ public class Main {
             int nextdiff = timePositionA[i+1] - timePositionB[i+1];
             if (curdiff==0 && nextdiff==0) {
                 continue;
+            } else if (curdiff * nextdiff > 0) {
+                continue;    
             } else if (curdiff * nextdiff == 0) {
                 count++;
             } else if (curdiff * nextdiff < 0) {
