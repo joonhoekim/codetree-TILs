@@ -46,8 +46,8 @@ public class Main {
             }
         }
 
-        int count = 1;
-        for(int i=1; i<totalTime-1; i++) {
+        int count = 0;
+        for(int i=0; i<totalTime-1; i++) {
             int curdiff = timePositionA[i] - timePositionB[i];
             int nextdiff = timePositionA[i+1] - timePositionB[i+1];
             if (curdiff==0 && nextdiff==0) {
