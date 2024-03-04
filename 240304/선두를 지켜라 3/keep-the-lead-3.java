@@ -48,14 +48,12 @@ public class Main {
 
         int count = 0;
         for(int i=0; i<totalTime-1; i++) {
-            int compNext = timePositionA[i+1]-timePositionB[i+1];
+            int compNext = timePositionA[i+1] - timePositionB[i+1];
             int compCurrent = timePositionA[i] - timePositionB[i];
 
-            // if 이전 0 다음 0 -> 같이 가는 상태 (continue)
-            // else if (이전 == 0 || 다음 == 0) -> 하나만 0인 경우. 이 경우 바뀐 것
-            // else if (이전 * 다음) < 0 -> 만난 다음에 (교차) 바뀌니까 2번 카운트
-            if (compNext * compCurrent > 0) {
-            } else if (compNext==0 && compCurrent == 0) {
+            // 순간 문제를 제대로 안 읽었는데,
+            // 매 시간마다 검사임!! 매 시간마다만!!
+            if(compNext==0 && compCurrent==0){
             } else if (compNext * compCurrent == 0) {
                 count += 1;
             } else if (compNext * compCurrent < 0) {
