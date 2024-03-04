@@ -54,13 +54,13 @@ public class Main {
             // if 이전 0 다음 0 -> 같이 가는 상태 (continue)
             // else if (이전 == 0 || 다음 == 0) -> 하나만 0인 경우. 이 경우 바뀐 것
             // else if (이전 * 다음) < 0 -> 만난 다음에 (교차) 바뀌니까 2번 카운트
-            if (compNext==0 && compCurrent==0) {
+            if (compNext==0 && compCurrent == 0) {
                 continue;
-            } else if (compNext==0 || compCurrent==0) {
-                count++;
+            } else if (compNext * compCurrent ==0) {
+                count += 1;
                 continue;
             } else if (compNext * compCurrent < 0) {
-                count += 2;
+                count += 3;
             }
         }
 
