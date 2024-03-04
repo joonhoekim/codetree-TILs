@@ -47,18 +47,22 @@ public class Main {
         }
 
         int count = 0;
-        for(int i=0; i<totalTime-1; i++) {
-            int curdiff = timePositionA[i] - timePositionB[i];
-            int nextdiff = timePositionA[i+1] - timePositionB[i+1];
-            if (curdiff==0 && nextdiff==0) {
-                continue;
-            } else if (curdiff * nextdiff > 0) {
-                continue;    
-            } else if (curdiff * nextdiff == 0) {
-                count++;
-            } else if (curdiff * nextdiff < 0) {
-                count++;
+        int previousStatus = 2; //1 : A>B, 2: A=B, 3: A<B
+        for(int i=0; i<totalTime; i++) {
+            int currentStatus = 0;
+            if(timePositionA[i] - timePositionB[i] == 0) {
+                currentStatus=2;
+            } else if (timePositionA[i] - timePositionB[i] > 0) {
+                currentStatus=1;
+            } else if (timePositionA[i] - timePositionB[i] < 0) {
+                currentStatus=3;
             }
+
+            if(currentStatus != previousStatus) {
+                count ++;
+            }
+
+            previousStatus = currentStatus;
         }
 
         System.out.print(count);
