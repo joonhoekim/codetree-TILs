@@ -46,18 +46,16 @@ public class Main {
             }
         }
 
-        int count = 0;
-        for(int i=0; i<totalTime-1; i++) {
-            int compNext = timePositionA[i+1] - timePositionB[i+1];
-            int compCurrent = timePositionA[i] - timePositionB[i];
-
-            // 순간 문제를 제대로 안 읽었는데,
-            // 매 시간마다 검사임!! 매 시간마다만!!
-            if(compNext==0 && compCurrent==0){
-            } else if (compNext * compCurrent == 0) {
-                count += 1;
-            } else if (compNext * compCurrent < 0) {
-                count += 1;
+        int count = 1;
+        for(int i=1; i<totalTime-1; i++) {
+            int curdiff = timePositionA[i] - timePositionB[i];
+            int nextdiff = timePositionA[i+1] - timePositionB[i+1];
+            if (curdiff==0 && nextdiff==0) {
+                continue;
+            } else if (curdiff * nextdiff == 0) {
+                count++;
+            } else if (curdiff * nextdiff < 0) {
+                count++;
             }
         }
 
