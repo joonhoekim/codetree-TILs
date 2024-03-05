@@ -23,11 +23,8 @@ public class Main {
             } else if (dir=='N') {
                 dirNum = 3;
             }
-
-            while(dist-->0) {
-                x+=dx[dirNum];
-                y+=dy[dirNum];
-            }
+            x+=dx[dirNum]*dist;
+            y+=dy[dirNum]*dist;
         }
         System.out.print(x+" "+y);
     }
