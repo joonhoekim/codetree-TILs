@@ -21,16 +21,16 @@ public class Main {
             case 'U': dirNum = 1; break;
         }
 
-        for(int second=0; second<=t; second++) {
+        for(int second=0; second<t; second++) {
             //이동 후 값이 내부 안에 들어가 있다면 이동한다.
-            int nrow = row + drow[dirNum];
             int ncol = col + dcol[dirNum];
+            int nrow = row + drow[dirNum];
+
             if(isIn(n,nrow,ncol)) {
                 row = nrow;
                 col = ncol;
             } else {
                 dirNum = (dirNum+2)%4;
-                second--;
             }
         }
 
@@ -39,7 +39,7 @@ public class Main {
     }
 
     static boolean isIn(int n, int row, int col) {
-        if(0<=row && row<n && 0<= col && col < n) {
+        if(0<row && row<=n && 0< col && col <= n) {
             return true;
         }
         return false;
