@@ -14,14 +14,14 @@ public class Main {
 
         int dirNum = -1;
         switch(dir) {
-            //L: 열만 하나 감소
+            //행은 반대로임..
             case 'L': dirNum = 0; break;
             case 'D': dirNum = 3; break;
             case 'R': dirNum = 2; break;
             case 'U': dirNum = 1; break;
         }
 
-        for(int second=0; second<=t+1; second++) {
+        for(int second=0; second<=t; second++) {
             //이동 후 값이 내부 안에 들어가 있다면 이동한다.
             int nrow = row + drow[dirNum];
             int ncol = col + dcol[dirNum];
@@ -30,6 +30,7 @@ public class Main {
                 col = ncol;
             } else {
                 dirNum = (dirNum+2)%4;
+                second--;
             }
         }
 
