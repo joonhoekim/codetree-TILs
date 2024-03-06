@@ -15,11 +15,12 @@ public class Main {
 
         int dirNum = 3;
         int ans = -1;
+        int time = 0;
         String commandLine = sc.nextLine();
 
-        for(int time=0; time<commandLine.length(); time++) {
+        loop: for(int i=0; i<commandLine.length(); i++) {
             char command = commandLine.charAt(time);
-            
+            time++;
             switch(command) {
                 case 'L': dirNum = leftTurn(dirNum); break;
                 case 'R': dirNum = rightTurn(dirNum); break;
@@ -27,9 +28,10 @@ public class Main {
                 x+=dx[dirNum];
                 y+=dy[dirNum];
                 if(x==originX && y==originY) {
-                    ans = time + 1;
+                    ans = time;
+                    break loop;
                 }
-                break;
+                
             }
             
         }
