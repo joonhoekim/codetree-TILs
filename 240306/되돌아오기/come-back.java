@@ -16,7 +16,8 @@ public class Main {
         dirs['S'] = 1;
         dirs['E'] = 2;
         dirs['N'] = 3;
-
+        
+        int ans = -1;
         int time = 0;
         for(int i=0; i<n; i++) {
             char dirCommand = sc.next().charAt(0);
@@ -26,12 +27,13 @@ public class Main {
                 y = y + dy[dirs[dirCommand]];
                 time++;
                 if(originX==x && originY==y) {
-                    System.out.print(time);
+                    ans = time;
+                    System.out.print(ans);
                     return;
                 }
             }
         }
 
-        System.out.print(-1);
+        System.out.print(ans);
     }
 }
