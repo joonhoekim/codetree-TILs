@@ -69,18 +69,18 @@ public class Main {
       dirNum = 1;
     } else if (k / n == 2) {
       row = n - 1;
-      col = n - k - 1;
+      col = n - k % n;
       dirNum = 2;
     } else if (k / n == 3) {
-      row = n - k - 1;
+      row = n - k % n;
       col = 0;
       dirNum = 3;
     }
-
+    char pastMirror = '0';
     int count = 0;
     while (true) {
       count++;
-      char pastMirror = mirrorBoard[row][col];
+      pastMirror = mirrorBoard[row][col];
       dirNum = mirror(pastMirror, dirNum);
       int nRow = row + dRow[dirNum];
       int nCol = col + dCol[dirNum];
