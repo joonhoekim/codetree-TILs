@@ -25,16 +25,17 @@ public class Main {
         return false;
     }
 
+    //DLUR 0123
     static int mirror(char currentMirror, int dirNum) {
         if(currentMirror == '/') {
             if(dirNum == 0) {
+                return 1;
+            } else if (dirNum == 1) {
+                return 0;
+            } else if (dirNum == 2) {
                 return 3;
             } else if (dirNum == 3) {
-                return 0;
-            } else if (dirNum == 1) {
                 return 2;
-            } else if (dirNum == 2) {
-                return 1;
             }
         } else if (currentMirror == '\\') {
             if(dirNum == 0) {
