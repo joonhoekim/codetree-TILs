@@ -69,10 +69,10 @@ public class Main {
       dirNum = 1;
     } else if (k / n == 2) {
       row = n - 1;
-      col = n - k % n;
+      col = n - k % n - 1;
       dirNum = 2;
     } else if (k / n == 3) {
-      row = n - k % n;
+      row = n - k % n - 1;
       col = 0;
       dirNum = 3;
     }
