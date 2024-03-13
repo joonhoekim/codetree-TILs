@@ -18,7 +18,12 @@ public class Main {
             } else {
                 binaryArr[i]='0';
             }
-            int n = Integer.parseInt(new String(binaryArr), 2);
+            //int n = Integer.parseInt(new String(binaryArr), 2);
+            int n = 0;
+            int base = 2;
+            for(int j=0;j<binaryArr.length;j++) {
+                n = n * base + (binaryArr[j]-'0');
+            }
             max = Math.max(max, n);
         }
 
