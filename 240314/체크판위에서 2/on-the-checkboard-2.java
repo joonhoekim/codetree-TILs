@@ -8,7 +8,7 @@ public class Main {
         char[][] board = new char[rowSize][colSize];
         for(int i=0; i<rowSize; i++) {
             for(int j=0; j<colSize; j++) {
-                board[i][j] =sc.next().charAt(0);
+                board[i][j] = sc.next().charAt(0);
             }
         }
 
@@ -21,18 +21,19 @@ public class Main {
             return;
         }
 
-        int count = 0 ;
+        int count = 0;
         for(int i=1; i<rowSize-2; i++) {
             for(int j=1; j<colSize-2; j++) {
 
                 for(int k=i+1; k<rowSize-1; k++) {
                     for (int l=j+1; l<colSize-1; l++) {
 
-                        if(board[i][j] != start && board[k][j] != end) {
+                        if(board[i][j] != start && board[k][j] == start) {
                             count++;
                         } 
                     }
                 }
+
                 
             }
         }
