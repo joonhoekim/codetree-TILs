@@ -22,7 +22,7 @@ public class Main {
                 System.out.print(0);
                 return;
             }
-            originBinary = binaryInput.substring(0,binaryInput.length()) + "0";
+            originBinary = binaryInput.substring(0,binaryInput.length()-1) + "0";
         }
 
         int ans = Integer.parseInt(originBinary, 2);
