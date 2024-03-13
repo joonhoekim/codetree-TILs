@@ -13,15 +13,14 @@ public class Main {
                 idx = i;
             }
         }
-        String originBinary;
-        if(idx != -1) {
-            originBinary = binaryInput.substring(0,idx) + "1" + binaryInput.substring(idx+1,binaryInput.length());
-        } else {
-            originBinary = binaryInput.substring(0,binaryInput.length()) + "0";
+
+        if(idx==-1) {
+            System.out.print(0);
+            return;
         }
-
+        String originBinary = binaryInput.substring(0,idx) + "1" + binaryInput.substring(idx+1,binaryInput.length());
+        
         int ans = Integer.parseInt(originBinary, 2);
-
         System.out.print(ans);
 
         
