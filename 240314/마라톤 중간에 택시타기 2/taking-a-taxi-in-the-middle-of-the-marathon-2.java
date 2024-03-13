@@ -29,14 +29,13 @@ public class Main {
          
         for(int idxExclude=1; idxExclude<n-1; idxExclude++) {
             int sumDist = 0;
-            for(int i=0; i<n-1; i++) {
-                if(i+1 == idxExclude) {
-                    sumDist += getManhattanDist(coords[i],coords[i+2]);
-                } else if(i == idxExclude) {
+            int prevIdx = 0;
+            for(int i=1; i<n; i++) {
+                if(i==idxExclude) {
                     continue;
-                } else {
-                    sumDist += getManhattanDist(coords[i], coords[i+1]);
                 }
+                sumDist += getManhattanDist(coords[prevIdx], coords[i]);
+                prevIdx = i;
             }
             minDist = Math.min(minDist, sumDist);
         }
