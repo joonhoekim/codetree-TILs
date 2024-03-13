@@ -1,0 +1,51 @@
+import java.util.*;
+
+class Coord {
+    int x;
+    int y;
+    Coord(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Coord[] coords = new Coord[n];
+
+        for(int i=0; i<n; i++) {
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            
+            coords[i] = new Coord(x, y);
+        }
+
+        int minDist = Integer.MAX_VALUE;
+
+        //제외하는 걸 어케 구현할까?
+         
+        for(int idxExclude=1; idxExclude<n-1; idxExclude++) {
+            int sumDist = 0;
+            for(int i=0; i<n-1; i++) {
+                if(i+1 == idxExclude) {
+                    sumDist += getManhattanDist(coords[i],coords[i+2]);
+                } else if(i == idxExclude) {
+                    continue;
+                } else {
+                    sumDist += getManhattanDist(coords[i], coords[i+1]);
+                }
+            }
+            minDist = Math.min(minDist, sumDist);
+        }
+
+        System.out.print(minDist);
+
+    }
+
+    static int getManhattanDist(Coord A, Coord B) {
+        return Math.abs(A.x - B.x) + Math.abs(A.y - B.y);
+    }
+}
