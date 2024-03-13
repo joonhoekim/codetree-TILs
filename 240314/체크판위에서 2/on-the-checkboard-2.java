@@ -24,19 +24,16 @@ public class Main {
         int count = 0;
         for(int i=1; i<rowSize-2; i++) {
             for(int j=1; j<colSize-2; j++) {
-
                 for(int k=i+1; k<rowSize-1; k++) {
-                    for (int l=j+1; l<colSize-1; l++) {
-
-                        if(board[i][j] != start && board[k][j] == start) {
-                            count++;
+                    for(int l=j+1; l<colSize-1; l++) {
+                        if(board[i][j] != start && board[k][l] != end ) {
+                                count++;
                         } 
                     }
                 }
-
-                
             }
         }
+    
 
         System.out.print(count);
     }
