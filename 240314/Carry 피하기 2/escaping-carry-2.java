@@ -17,7 +17,7 @@ public class Main {
                 for(int k=j+1; k<n; k++) {
                     boolean haveCarry = false;
 
-                    for(int exponent=0; exponent<6; exponent++) {
+                    for(int exponent=0; exponent<4; exponent++) {
                         // divide by base^N = shift to right N
                         // mode by base = getLastDigit
                         int divider = (int) Math.pow(10, exponent); 
