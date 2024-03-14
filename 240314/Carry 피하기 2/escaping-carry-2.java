@@ -17,8 +17,11 @@ public class Main {
                 for(int k=j+1; k<n-2; k++) {
                     boolean haveCarry = false;
 
-                    for(int exponent=0; exponent<5; exponent++) {
-                        int divider = (int) Math.pow(10, exponent);
+                    for(int exponent=0; exponent<6; exponent++) {
+                        // divide by base^N = shift to right N
+                        // mode by base = getLastDigit
+                        int divider = (int) Math.pow(10, exponent); 
+
                         int first = arr[i]/divider%10;
                         int second = arr[j]/divider%10;
                         int third = arr[k]/divider%10;
@@ -27,26 +30,14 @@ public class Main {
                             break;
                         }
                     }
-                    if(haveCarry) {
-                        continue;
-                    } else {
-                        int first = arr[i];
-                        int second = arr[j];
-                        int third = arr[k];
-                        max = Math.max(max, first+second+third);
+                    if(!haveCarry) {
+                        int sum = arr[i] + arr[j] + arr[k];
+                        max = Math.max(max, sum);
                     }
                 }
             }
         }
 
         System.out.print(max);
-    }
-
-    static int getLastDigit(int n) { //base=10
-        return n%10;
-    }
-
-    static int shiftRight(int n) {
-        return n/10;
     }
 }
