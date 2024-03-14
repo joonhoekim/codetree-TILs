@@ -17,7 +17,7 @@ public class Main {
                 for(int k=j+1; k<n-2; k++) {
                     boolean haveCarry = false;
 
-                    for(int exponent=0; exponent<4; exponent++) {
+                    for(int exponent=0; exponent<5; exponent++) {
                         int divider = (int) Math.pow(10, exponent+1);
                         int first = arr[i]/divider%10;
                         int second = arr[j]/divider%10;
