@@ -11,8 +11,7 @@ public class Main {
         for(int i=0; i<n-2; i++){
             for(int j=i+1; j<n-1; j++){
                 for(int k=j+1; k<n; k++){
-                    String strTemp =  "" + str.charAt(i) + str.charAt(j) + str.charAt(k);
-                    if(strTemp.equals("COW")) {
+                    if(str.charAt(i)=='C' && str.charAt(j)=='O' && str.charAt(k)=='W') {
                         count++;
                     }
                 }
