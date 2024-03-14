@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //완전탐색은 백트래킹의 아버지
+        int n = sc.nextInt();
+        String str = sc.next();
+
+        int count=0;
+        for(int i=0; i<n-2; i++){
+            for(int j=i+1; j<n-1; j++){
+                for(int k=j+1; k<n; k++){
+                    String strTemp =  "" + str.charAt(i) + str.charAt(j) + str.charAt(k);
+                    if(strTemp.equals("COW")) {
+                        count++;
+                    }
+                }
+            }
+        }
+
+        System.out.print(count);
+
+    }
+}
