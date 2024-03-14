@@ -18,12 +18,13 @@ public class Main {
                     boolean haveCarry = false;
 
                     for(int exponent=0; exponent<5; exponent++) {
-                        int divider = (int) Math.pow(10, exponent+1);
+                        int divider = (int) Math.pow(10, exponent);
                         int first = arr[i]/divider%10;
                         int second = arr[j]/divider%10;
                         int third = arr[k]/divider%10;
                         if(first+second+third>=10) {
                             haveCarry = true;
+                            break;
                         }
                     }
                     if(haveCarry) {
@@ -39,5 +40,13 @@ public class Main {
         }
 
         System.out.print(max);
+    }
+
+    static int getLastDigit(int n) { //base=10
+        return n%10;
+    }
+
+    static int shiftRight(int n) {
+        return n/10;
     }
 }
