@@ -14,7 +14,7 @@ public class Main {
     }
 
     int winStreak = 5;
-    for (int row = 0; row < board.length - winStreak; row++) {
+    for (int row = 0; row < board.length - winStreak + 1; row++) {
       for (int col = 0; col < board[0].length; col++) {
         //세로줄 달성 확인하기
 
@@ -37,7 +37,7 @@ public class Main {
 
     //가로줄 달성 확인하기
     for (int row = 0; row < board.length; row++) {
-      for (int col = 0; col < board[0].length - winStreak; col++) {
+      for (int col = 0; col < board[0].length - winStreak + 1; col++) {
 
         int winner = -1; //-1: 누군가가 우승함, 0: Nobody win, 1:흑 우승, 2:백 우승
         int start = board[row][col];
@@ -58,8 +58,8 @@ public class Main {
     }
 
     //대각선 달성 확인하기 \
-    for (int row = 0; row < board.length - winStreak; row++) {
-      for (int col = 0; col < board[0].length - winStreak; col++) {
+    for (int row = 0; row < board.length - winStreak +1; row++) {
+      for (int col = 0; col < board[0].length - winStreak+1; col++) {
 
         int winner = -1; //-1: 누군가가 우승함, 0: Nobody win, 1:흑 우승, 2:백 우승
         int start = board[row][col];
@@ -79,9 +79,8 @@ public class Main {
     }
 
     //대각선 달성 확인하기 /
-    //이 케이스는 반복문의 시작점이 스타트포인트가 아님!!!!
-    for (int row = 0; row < board.length - winStreak; row++) {
-      for (int col = 0; col < board[0].length - winStreak; col++) {
+    for (int row = 0; row < board.length - winStreak+1; row++) {
+      for (int col = 0; col < board[0].length - winStreak+1; col++) {
         int winner = -1; //-1: 누군가가 우승함, 0: Nobody win, 1:흑 우승, 2:백 우승
         int start = board[row + winStreak - 1][col];
         for (int i = 0; i < winStreak; i++) {
