@@ -7,21 +7,19 @@ public class Main {
         int s = sc.nextInt();
         int[] arr = new int[n];
         
+        int precalculatedSum = 0;
         for(int i=0; i<n; i++) {
             arr[i] = sc.nextInt();
+            precalculatedSum += arr[i];
         }
+
+
 
         int minDiff = Integer.MAX_VALUE;
         for(int i=0; i<n-1; i++) {
             for(int j=i+1; j<n; j++) {
-                int sum = 0;
-                for(int order=0; order<n; order++) {
-                    if(order==i || order==j) {
-                        continue;
-                    }
-                    sum+=arr[order];
-                    minDiff = Math.min(minDiff, Math.abs(sum-s));
-                }
+                int sum = precalculatedSum - arr[i] - arr[j];
+                minDiff = Math.min(minDiff, Math.abs(sum-s));
             }
         }
         System.out.print(minDiff);
