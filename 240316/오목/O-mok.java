@@ -7,7 +7,7 @@ public class Main {
   public static void main(String[] args) throws Exception{
     //처음 풀 때는 가로, 세로, / , \ 각각을 구했는데
     //풀고 해답을 보니까 dxdy로 푸는 방법이 있어서 그것도 구현해 보기
-    //각 방법의 장단점? dxdy 방법이 구현이 더 직관적이다.
+    //각 방법의 장단점?
 
     Scanner sc = new Scanner(System.in);
 
@@ -30,6 +30,7 @@ public class Main {
     // - 보드를 나가는지를 검사할 수 있어야 함
     // - i, j 는 우승 지점의 가운데로 가정함
     int winner = 0; //승부 미정 = 0
+    final int WIN_CONDITION = 5;
 
     for(int i=0; i<boardsize; i++) {//검사지점 (행)
       for(int j=0; j<boardsize; j++) {//검사지점 (열)
@@ -39,26 +40,31 @@ public class Main {
         }
 
         //우승여부 확인
-        direction: for(int k=0; k<drow.length; k++) { //확인할 방향 설정 (0~7)
+        for(int k=0; k<drow.length; k++) { //확인할 방향 설정 (0~7)
           dirNum = k;
+          int count = 0; //방향 설정시마다 카운트 변경
           for(int streak=-2; streak<=2; streak++) { //-2~+2까지 검사
             int nrow = i + streak * drow[dirNum];
             int ncol = j + streak * dcol[dirNum];
 
             //그냥 넘기는 경우 : 보드밖, 빈칸, 이전과 다른 색
             if(!isRange(nrow, ncol)) { // 보드 밖으로 나가는 예외를 가장 먼저 처리
-              break direction;
+              break;
             } else if(board[nrow][ncol] == 0) { // 빈 칸이 있는 경우를 처리
-              break direction;
+              break;
             } else if(board[nrow][ncol] != board[i][j]) { //시작점과 다른 돌이 있는 경우
-              break direction;
+              break;
             }
+
+            count++;
           }
-          //이긴 돌과 중심점 출력하고 반환을 통해 메서드 종료
-          winner = board[i][j];
-          System.out.println(winner);
-          System.out.printf("%d %d", i+1, j+1);
-          return;
+          //5번 카운트 완료되면 이긴 돌과 중심점 출력하고 반환을 통해 메서드 종료
+          if(count==5) {
+            winner = board[i][j];
+            System.out.println(winner);
+            System.out.printf("%d %d", i+1, j+1);
+            return;
+          }
         }
       }
     }
