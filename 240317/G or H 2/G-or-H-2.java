@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 class Person {
-    int position;
-    char character;
+    final int position;
+    final char character;
 
     public Person(int position, char character) {
         this.position = position;
@@ -21,18 +21,34 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n = Integer.parseInt(br.readLine()); // 사람 수
+        final int n = Integer.parseInt(br.readLine()); // 사람 수
 
-        ArrayList<Person> people = new ArrayList<>(); // 사람들을 저장하는 리스트
+        ArrayList<Person> people = new ArrayList<>(n); // 사람들을 저장하는 리스트
 
         // 각 사람의 위치와 팻말 정보를 입력받아 Person 객체를 생성하여 리스트에 저장합니다.
         for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            int position = Integer.parseInt(st.nextToken()); // 위치
-            char character = st.nextToken().charAt(0); // 팻말
+            final int position = Integer.parseInt(st.nextToken()); // 위치
+            final char character = st.nextToken().charAt(0); // 팻말
             people.add(new Person(position, character));
         }
 
+        final int maxSize = getMaxPhotoSize(people);
+
+        bw.write(maxSize + "\n"); // 최대 사진 크기 출력
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
+    // 리스트에 주어진 위치에 사람이 있는지 확인하는 메서드
+    private static boolean hasPerson(ArrayList<Person> people, int position) {
+        return people.stream().anyMatch(person -> person.position == position);
+    }
+
+    // 최대 사진 크기를 계산하는 메서드
+    private static int getMaxPhotoSize(ArrayList<Person> people) {
         int maxSize = 0; // 최대 사진 크기
 
         // 각 위치에서 시작하여 가능한 모든 사진 크기 확인
@@ -67,20 +83,6 @@ public class Main {
             }
         }
 
-        bw.write(maxSize + "\n"); // 최대 사진 크기 출력
-
-        bw.flush();
-        bw.close();
-        br.close();
-    }
-
-    // 리스트에 주어진 위치에 사람이 있는지 확인하는 메서드
-    private static boolean hasPerson(ArrayList<Person> people, int position) {
-        for (Person person : people) {
-            if (person.position == position) {
-                return true;
-            }
-        }
-        return false;
+        return maxSize;
     }
 }
