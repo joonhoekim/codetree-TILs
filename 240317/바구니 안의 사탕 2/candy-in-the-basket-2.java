@@ -13,14 +13,24 @@ public class Main {
             oneDimension[pos] += numberOfCandy;
         }
         int maxCandy = 0;
-        for(int center = k; center < SIZE - k; center++) {
+        for(int center = 0; center <= SIZE; center++) {
             int sumCandy = 0;
             for(int scan = center-k; scan <= center+k; scan++) {
+                if(!isIn(scan,0,SIZE-1)) {
+                    continue;
+                }
                 sumCandy += oneDimension[scan];
             }
             maxCandy = Math.max(maxCandy, sumCandy);
         }
 
         System.out.println(maxCandy);
+    }
+
+    static boolean isIn(int i, int start, int end) {
+        if(start <= i && i <= end) {
+            return true;
+        }
+        return false;
     }
 }
