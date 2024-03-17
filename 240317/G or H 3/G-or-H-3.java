@@ -16,7 +16,7 @@ public class Main {
         }
 
         int maxScore = 0;
-        for(int i=0; i<SIZE-k; i++) {
+        for(int i=0; i<=SIZE-k; i++) {
             int score = 0;
             for(int scan=i; scan<=i+k; scan++) {
                 if(arr[scan] == 'G') {
