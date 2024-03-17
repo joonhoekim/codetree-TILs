@@ -8,8 +8,9 @@ public class Main {
 
         int n = sc.nextInt();
         int m = sc.nextInt();
+        final int SIZE = 100+1;
         int[] arrA = new int[n];
-        int[] arrB = new int[100+1];
+        int[] arrB = new int[SIZE];
         
         for(int i=0;i<n;i++) {
             arrA[i] = sc.nextInt();
@@ -17,22 +18,28 @@ public class Main {
 
         for(int i=0;i<m;i++) {
             int input = sc.nextInt();
-            arrB[input] = 1;
+            arrB[input] += 1;
         }
-        int ans = 0;
-        for(int start=0; start<=n-m; start++) {
-            int count = 0;
-            for(int cursor=start; cursor<start+m; cursor++) {
-                
-                if(arrB[arrA[cursor]]==1) {
-                    count++;
-                }
+        int count = 0;
+        for(int start=0; start<n-m+1; start++) {
+            int[] arrC = new int[SIZE];
+            for(int i=0; i<m; i++) {
+                int input = arrA[start+i];
+                arrC[input] += 1;
             }
-            if(count==m) {
-                ans++;
+
+            boolean isSameArr = true;
+            for(int i=0; i<SIZE; i++) {
+                if(arrB[i]!=arrC[i]) {
+                    isSameArr = false;
+                    break;
+                } 
+            }
+            if(isSameArr) {
+                count++;
             }
         }
 
-        System.out.print(ans);
+        System.out.print(count);
     }
 }
