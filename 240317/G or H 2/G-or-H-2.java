@@ -27,24 +27,22 @@ public class Main {
 
         int maxSize = 0; // 최대 사진 크기
 
-        // 각 위치에서 시작하여 가능한 모든 사진 크기 확인
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                int totalG = 0; // 'G'의 총 개수
-                int totalH = 0; // 'H'의 총 개수
+        // 시작점을 고정시키고, 끝점을 이동하면서 사진의 크기를 조절하여 최대 사진 크기를 찾습니다.
+        for (int startIdx = 0; startIdx < n; startIdx++) {
+            int totalG = 0; // 'G'의 총 개수
+            int totalH = 0; // 'H'의 총 개수
 
-                // startPoint부터 endPoint까지 'G'와 'H'의 개수 합산
-                for (int k = i; k <= j; k++) {
-                    if (people[k].character == 'G') {
-                        totalG++;
-                    } else {
-                        totalH++;
-                    }
+            for (int endIdx = startIdx; endIdx < n; endIdx++) {
+                if (people[endIdx].character == 'G') {
+                    totalG++;
+                } else {
+                    totalH++;
                 }
 
                 // 'G'와 'H'가 모두 없거나 개수가 같은 경우
                 if ((totalG == 0 && totalH != 0) || (totalG != 0 && totalH == 0) || totalG == totalH) {
-                    maxSize = Math.max(maxSize, people[j].position - people[i].position);
+                    int currentSize = people[endIdx].position - people[startIdx].position;
+                    maxSize = Math.max(maxSize, currentSize);
                 }
             }
         }
