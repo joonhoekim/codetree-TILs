@@ -12,7 +12,7 @@ public class Main {
             arr[i]=sc.nextInt();
         }
 
-        int minCost = 999999;
+        int minCost = Integer.MAX_VALUE;
         for(int start = 0; start <= n-t; start++ ) {
             
             int cost = 0;
