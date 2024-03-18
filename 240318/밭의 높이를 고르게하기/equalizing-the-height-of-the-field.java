@@ -16,9 +16,9 @@ public class Main {
         for(int start = 0; start <= n-t; start++ ) {
             
             int cost = 0;
-            for(int cursor = start; cursor < start+t; cursor++) {
+            for(int cursor=start; cursor<start+t; cursor++) { //t개 연속
                 cost += Math.abs(arr[cursor] - h);
-            }
+            } 
             minCost = Math.min(minCost, cost);
         }
 
