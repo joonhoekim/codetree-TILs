@@ -13,7 +13,7 @@ public class Main {
         }
 
         int minCost = 99999;
-        for(int start = 0; start <= n-t; start++ ) {
+        for(int start = 0; start < n-t; start++ ) {
             
             int cost = 0;
             for(int cursor = start; cursor < start+t; cursor++) {
