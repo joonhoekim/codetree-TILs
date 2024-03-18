@@ -12,8 +12,8 @@ public class Main {
             arr[i]=sc.nextInt();
         }
 
-        int minCost = 99999;
-        for(int start = 0; start < n-t; start++ ) {
+        int minCost = 999999;
+        for(int start = 0; start <= n-t; start++ ) {
             
             int cost = 0;
             for(int cursor = start; cursor < start+t; cursor++) {
