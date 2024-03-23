@@ -8,17 +8,16 @@ public class Main {
         int n = sc.nextInt();
         System.out.print(f(n));
     }
-    static int count = 0;
+
     static int f(int n) {
         if(n==1) {
-            return count;
+            return 0;
         }
         if(n%2==0) {
             n /=2;
         } else {
             n /=3;
         }
-        count++;
-        return f(n);
+        return f(n)+1;
     }
 }
