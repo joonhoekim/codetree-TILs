@@ -11,9 +11,7 @@ public class Main {
     static int getNthFibonacciSequance(int n) {
         if(n<=2) {
             return 1;
-        } else {
-            n=getNthFibonacciSequance(n-1) + getNthFibonacciSequance(n-2);
-        }
+        } 
         return getNthFibonacciSequance(n-1) + getNthFibonacciSequance(n-2);
     }
 }
