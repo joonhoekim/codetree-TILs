@@ -31,8 +31,8 @@ public class Main {
             for(int y=rects[0].y1;y<=rects[0].y2; y++)
                 board[x][y] = 1;
         
-        for(int x=rects[1].x1; x<rects[1].x2; x++) 
-            for(int y=rects[1].y1;y<rects[1].y2; y++)
+        for(int x=rects[1].x1; x<=rects[1].x2; x++) 
+            for(int y=rects[1].y1;y<=rects[1].y2; y++)
                 board[x][y] = -1;
 
         int minX = 2002;
@@ -57,7 +57,7 @@ public class Main {
             return;
         }
         System.out.println(
-            (maxX - minX) * (maxY - minY)
+            (maxX - minX ) * (maxY - minY )
         );
         
     }
