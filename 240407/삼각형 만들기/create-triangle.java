@@ -12,12 +12,12 @@ public class Main {
     }
 
     //renew max
-    int maxArea = Integer.MIN_VALUE;
+    int maxArea = 0; //no triangle that can make area, return 0
 
     //pick three xy points
     for (int i = 0; i < n - 2; i++) {
-      for (int j = i + 1; j < n - 1; j++) {
-        for (int k = j + 1; k < n; k++) {
+      for (int j = 1; j < n - 1; j++) {
+        for (int k = 2; k < n; k++) {
           int[][] picked = new int[3][2];
           picked[0] = xy[i];
           picked[1] = xy[j];
@@ -28,8 +28,8 @@ public class Main {
           for (int first = 0; first < 3 - 1; first++) {
             for (int second = first + 1; second < 3; second++) {
               //call by ref
-              checkXparallel(xy, first, second, parallel);
-              checkYparallel(xy, first, second, parallel);
+              checkXparallel(picked, first, second, parallel);
+              checkYparallel(picked, first, second, parallel);
             }
           }
 
@@ -44,19 +44,26 @@ public class Main {
   }
 
   private static int getArea(int[][] p) {
-    return p[0][0] * p[1][1] + p[1][0] * p[2][1] + p[2][0] * p[0][1] - p[1][0] * p[0][1] - p[2][0] * p[1][1]
-        - p[0][0] * p[2][1];
+    int doubledArea = 0;
+    //Gauss's polygon area theorem (also called shoelace theorem)
+    for (int i = 0; i < p.length; i++) {
+      int next = (i + 1) % p.length;
+      doubledArea += p[i][0] * p[next][1] - p[i][1] * p[next][0];
+    }
+
+    return doubledArea;
   }
 
-  private static void checkYparallel(int[][] xy, int first, int second, boolean[] parallel) {
-    if (xy[first][0] == xy[second][0]) {
+  private static void checkXparallel(int[][] picked, int first, int second, boolean[] parallel) {
+    if (picked[first][1] == picked[second][1]) {
+      parallel[0] = true;
+    }
+  }
+
+  private static void checkYparallel(int[][] picked, int first, int second, boolean[] parallel) {
+    if (picked[first][0] == picked[second][0]) {
       parallel[1] = true;
     }
   }
 
-  private static void checkXparallel(int[][] xy, int first, int second, boolean[] parallel) {
-    if (xy[first][1] == xy[second][1]) {
-      parallel[0] = true;
-    }
-  }
 }
