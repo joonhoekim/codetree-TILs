@@ -23,7 +23,7 @@ public class Main {
       int endTime = 0;
       for (int j = 0; j < n; j++) {
         startTime = Math.min(startTime, devs[j][0]);
-        endTime = Math.max(endTime, devs[i][1]);
+        endTime = Math.max(endTime, devs[j][1]);
       }
 
       //운행여부를 day 배열에 더해서 시뮬레이션한다.
@@ -32,7 +32,7 @@ public class Main {
         if (man == i) {
           continue;
         }
-        for (int time = devs[man][0]; time < devs[i][1] - 1; time++) {
+        for (int time = devs[man][0]; time < devs[man][1]; time++) {
           day[time]++;
         }
       }
