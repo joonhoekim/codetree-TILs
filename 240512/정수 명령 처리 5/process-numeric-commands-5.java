@@ -21,6 +21,7 @@ public class Main {
       if (command.equals("push_back")) {
         if(last==size) {
           arr = grow(arr, arr.length/2);
+          size = arr.length;
         }
         int a = sc.nextInt();
         arr[last++] = a;
