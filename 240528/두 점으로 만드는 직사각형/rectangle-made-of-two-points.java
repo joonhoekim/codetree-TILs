@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-class XY {
+class RectangleLeftBottomAndRightTop {
     int x1, y1, x2, y2;
 
-    public XY(int x1, int y1, int x2, int y2) {
+    public RectangleLeftBottomAndRightTop(int x1, int y1, int x2, int y2) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
@@ -15,39 +15,39 @@ class XY {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        XY[] xy = new XY[2];
+        RectangleLeftBottomAndRightTop[] rectangleLeftBottomAndRightTop = new RectangleLeftBottomAndRightTop[2];
         for (int i = 0; i < 2; i++) {
-            xy[i] = new XY(sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt());
+            rectangleLeftBottomAndRightTop[i] = new RectangleLeftBottomAndRightTop(sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt());
         }
 
-        System.out.println(getLeastArea(xy));
+        System.out.println(getLeastArea(rectangleLeftBottomAndRightTop));
     }
 
-    private static int getLeastArea(XY[] xy) {
-        return getLeastWidth(xy) * getLeastHeight(xy);
+    private static int getLeastArea(RectangleLeftBottomAndRightTop[] rectangleLeftBottomAndRightTop) {
+        return getLeastWidth(rectangleLeftBottomAndRightTop) * getLeastHeight(rectangleLeftBottomAndRightTop);
     }
 
-    private static int getLeastHeight(XY[] xy) {
+    private static int getLeastHeight(RectangleLeftBottomAndRightTop[] rectangleLeftBottomAndRightTop) {
         int minHeight = Integer.MAX_VALUE;
         int maxHeight = Integer.MIN_VALUE;
-        for (int i = 0; i < xy.length; i++) {
-            minHeight = Math.min(minHeight, xy[i].y1);
-            minHeight = Math.min(minHeight, xy[i].y2);
-            maxHeight = Math.max(maxHeight, xy[i].y1);
-            maxHeight = Math.max(maxHeight, xy[i].y2);
+        for (int i = 0; i < rectangleLeftBottomAndRightTop.length; i++) {
+            minHeight = Math.min(minHeight, rectangleLeftBottomAndRightTop[i].y1);
+            minHeight = Math.min(minHeight, rectangleLeftBottomAndRightTop[i].y2);
+            maxHeight = Math.max(maxHeight, rectangleLeftBottomAndRightTop[i].y1);
+            maxHeight = Math.max(maxHeight, rectangleLeftBottomAndRightTop[i].y2);
         }
 
         return maxHeight - minHeight;
     }
 
-    private static int getLeastWidth(XY[] xy) {
+    private static int getLeastWidth(RectangleLeftBottomAndRightTop[] rectangleLeftBottomAndRightTop) {
         int minWidth = Integer.MAX_VALUE;
         int maxWidth = Integer.MIN_VALUE;
-        for (int i = 0; i < xy.length; i++) {
-            minWidth = Math.min(minWidth, xy[i].x1);
-            minWidth = Math.min(minWidth, xy[i].x2);
-            maxWidth = Math.max(maxWidth, xy[i].x1);
-            maxWidth = Math.max(maxWidth, xy[i].x2);
+        for (int i = 0; i < rectangleLeftBottomAndRightTop.length; i++) {
+            minWidth = Math.min(minWidth, rectangleLeftBottomAndRightTop[i].x1);
+            minWidth = Math.min(minWidth, rectangleLeftBottomAndRightTop[i].x2);
+            maxWidth = Math.max(maxWidth, rectangleLeftBottomAndRightTop[i].x1);
+            maxWidth = Math.max(maxWidth, rectangleLeftBottomAndRightTop[i].x2);
         }
 
         return maxWidth - minWidth;
