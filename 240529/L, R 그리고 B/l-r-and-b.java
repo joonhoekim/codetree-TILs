@@ -41,8 +41,12 @@ public class Main {
             }
         }
 
-        if (isStraight(l, b) && isBlocked(l, r, b)) { // && 문법에 따라 isStraight를 먼저 검사한다!
-            System.out.println(getMinDiagonalDist(l, b) + 2);
+        if (isStraight(l, b)) { // && 문법에 따라 isStraight를 먼저 검사한다!
+            if ( isBlocked(l, r, b)) {
+                System.out.println(getMinDiagonalDist(l, b) + 2);
+            } else {
+                System.out.println(getMinDiagonalDist(l, b));
+            }
         } else {
             System.out.println(getMinDiagonalDist(l, b));
         }
@@ -50,18 +54,26 @@ public class Main {
 
     }
 
+
     private static boolean isBlocked(RC l, RC r, RC b) {
         if (l.row == b.row && b.row == r.col) {
-          return true;
+          int min = Math.min(l.col, b.col);
+          int max = Math.max(l.col, b.col);
+          if(min < r.col && r.col < max) {
+              return true;
+          }
         }
 
         else if (l.col == b.col && b.col == r.col) {
-            return true;
+            int min = Math.min(l.row, b.row);
+            int max = Math.max(l.row, b.row);
+            if(min < r.row && r.row < max) {
+                return true;
+            }
         }
 
-        else {
-            return false;
-        }
+        return false;
+
     }
 
     private static int getMinDiagonalDist(RC l, RC b) {
