@@ -42,7 +42,7 @@ public class Main {
         }
 
         if (isStraight(l, b)) { // && 문법에 따라 isStraight를 먼저 검사한다!
-            if ( isBlocked(l, r, b)) {
+            if (isBlocked(l, r, b)) {
                 System.out.println(getMinDiagonalDist(l, b) + 2);
             } else {
                 System.out.println(getMinDiagonalDist(l, b));
@@ -56,7 +56,7 @@ public class Main {
 
 
     private static boolean isBlocked(RC l, RC r, RC b) {
-        if (l.row == b.row && b.row == r.col) {
+        if (l.row == b.row && b.row == r.row) {
           int min = Math.min(l.col, b.col);
           int max = Math.max(l.col, b.col);
           if(min < r.col && r.col < max) {
