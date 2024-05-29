@@ -21,18 +21,41 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
+        int[] arrCopied = arr.clone();
         Arrays.sort(arr);
         int min = arr[0];
-        int secondaryMinPos = 1;
+        int secondaryMin = -1;
+
+        //두번째로 작은 수 찾기
         for (int i = 1; i < n; i++) {
             if(arr[i] > min) {
-                secondaryMinPos = i+1;
+                secondaryMin = arr[i];
                 break;
             }
         }
 
-        if(secondaryMinPos == 1) {
+        //없다면 -1 반환
+        if(secondaryMin == -1) {
             return -1;
+        }
+
+        //있다면 두번째로 작은 수가 한개인지 검사하기
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == secondaryMin) {
+                count++;
+            }
+
+            if(count == 2) {
+                return -1;
+            }
+        }
+
+        int secondaryMinPos = 0;
+        for (int i = 0; i < n; i++) {
+            if(arrCopied[i] == secondaryMin) {
+                secondaryMinPos = i+1;
+            }
         }
 
         return secondaryMinPos;
