@@ -36,8 +36,10 @@ public class Main {
                     int min = Integer.MAX_VALUE;
                     int max = Integer.MIN_VALUE;
                     Set<Integer> set = new HashSet<>();
+                    boolean duplicated = false;
                     for (int team : teams) {
                         if (!set.add(team)) {
+                            duplicated = true;
                             break;
                         }
                         min = Math.min(min, team);
@@ -46,7 +48,8 @@ public class Main {
 
                     int diff = max - min;
 
-                    if (diff == 0) {
+
+                    if (diff == 0 || duplicated) {
                         break;
                     }
                     globalMinDiff = Math.min(globalMinDiff, diff);
