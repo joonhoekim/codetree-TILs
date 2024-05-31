@@ -19,8 +19,10 @@ public class Main {
     int sum = 0;
 
     for (int i = a; i <= b; i++) {
-      if (isTrue(i)) {
-        sum += i;
+      if (i != 1) {
+        if (isTrue(i)) {
+          sum += i;
+        }
       }
     }
     System.out.println(sum);
