@@ -11,11 +11,12 @@ public class Main {
         int n = sc.nextInt();
         int budget = sc.nextInt();
         int[] prices = new int[n];
-        //학생 순서를 고려할 필요가 없으므로, 저렴한 것부터 사주자.
-        Arrays.sort(prices);
         for (int i = 0; i < n; i++) {
             prices[i] = sc.nextInt();
         }
+
+        //학생 순서를 고려할 필요가 없으므로, 저렴한 것부터 사주자.
+        Arrays.sort(prices);
 
         // i번째 물건에 쿠폰을 적용해보고 몇개 구매할 수 있는지 확인
         int globalMaxBuyIdx = 0;
