@@ -42,10 +42,6 @@ class SymptomRec {
     }
 }
 
-class Cheese {
-    boolean isAlleged = false;
-}
-
 public class Main {
 
     static Scanner sc = new Scanner(System.in);
@@ -61,54 +57,51 @@ public class Main {
         SymptomRec[] symptomRecs = new SymptomRec[symptomRecCount];
 
         for (int i = 0; i < eatRecCount; i++) {
-            int manId = sc.nextInt() - 1;
-            int cheeseId = sc.nextInt() - 1;
+            int manIdx = sc.nextInt() - 1;
+            int cheeseIdx = sc.nextInt() - 1;
             int eatTime = sc.nextInt();
-            eatRecs[i] = new EatRec(manId, cheeseId, eatTime);
+            eatRecs[i] = new EatRec(manIdx, cheeseIdx, eatTime);
         }
 
         for (int i = 0; i < symptomRecCount; i++) {
-            int manId = sc.nextInt() - 1;
+            int manIdx = sc.nextInt() - 1;
             int symptomTime = sc.nextInt();
-            symptomRecs[i] = new SymptomRec(manId, symptomTime);
-        }
-
-        //cheese 기록을 위해 배열을 만들어둔다.
-        Cheese[] cheeses = new Cheese[cheeseCount];
-        for (int cheeseIdx = 0; cheeseIdx < cheeseCount; cheeseIdx++) {
-            cheeses[cheeseIdx] = new Cheese();
+            symptomRecs[i] = new SymptomRec(manIdx, symptomTime);
         }
 
         //하나의 cheese가 상했다고 가정할 때 기록과의 '완전일치' 여부를 확인해본다.
         //그 치즈가 유일하게 상한 치즈이다! 증상기록에 하나라도 모순되면 안된다.
-        int allegedCheese = 0;
+        int badCheeseIdx = -1;
         for (int cheeseIdx = 0; cheeseIdx < cheeseCount; cheeseIdx++) {
-            int checkCount = 0;
+
+            //증상기록 하나하나의 일치여부를 카운트한다.
+            int CheckedSympRecCount = 0;
             for (SymptomRec symptomRec : symptomRecs) {
                 for (EatRec eatRec : eatRecs) {
-
+                    //증상 시간 1초 이하 전에 이 치즈를 먹은 기록이 하나라도 있으면 OK.
                     if (symptomRec.manIdx == eatRec.manIdx) {
-                        boolean isEaten = eatRec.eatTime <= symptomRec.symptomTime - 1;
-                        if (isEaten) {
-                            checkCount++;
+                        boolean isTheCheese = eatRec.cheeseIdx == cheeseIdx;
+                        boolean isInTime = eatRec.eatTime <= symptomRec.symptomTime - 1;
+                        if (isTheCheese && isInTime) {
+                            CheckedSympRecCount++;
+                            break;
                         }
                     }
-
-
                 }
             }
-            if (checkCount == symptomRecCount) {
-                allegedCheese = cheeseIdx;
+
+            if (CheckedSympRecCount == symptomRecCount) {
+                badCheeseIdx = cheeseIdx;
                 break;
             }
         }
 
+        //상한 치즈를 먹은 사람 수를 센다.
         Set<Integer> atePeopleSet = new HashSet<>();
-
         for (EatRec eatRec : eatRecs) {
-            if(eatRec.cheeseIdx == allegedCheese) atePeopleSet.add(eatRec.manIdx);
+            if(eatRec.cheeseIdx == badCheeseIdx) atePeopleSet.add(eatRec.manIdx);
         }
-        
+
 
         System.out.println(atePeopleSet.size());
 
