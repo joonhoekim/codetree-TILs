@@ -6,7 +6,7 @@ public class Main {
 
     int M = sc.nextInt();
     int D = sc.nextInt();
-
+    
     if (dateValidator(M, D)) {
       System.out.println("Yes");
     } else {
@@ -15,25 +15,14 @@ public class Main {
   }
 
   public static Boolean dateValidator(int M, int D) {
-    Boolean isValid = true;
+    int[] lastDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
     if (M > 12) {
-      isValid = false;
+      return false;
+    } else if (lastDays[M-1] < D) {
+      return false;
     }
-    if (M == 2) {
-      if (D > 28) {
-        isValid = false;
-      }
-    }
-    if (M % 2 != 0) {
-      if (D > 31) {
-        isValid = false;
-      }
-    } else if (M % 2 == 0) {
-      if (D > 30) {
-        isValid = false;
-      }
-    } 
-    
-    return isValid;
+
+    return true;
   }
 }
