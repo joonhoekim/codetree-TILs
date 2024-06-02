@@ -27,9 +27,9 @@ public class Main {
 
     int answer = 0;
     //모든 순서쌍을 완전탐색
-    //devIdx가 i>j 인 것임을 가정한다.
-    for (int i = 0; i < devCount; i++) {
-      for (int j = 0; j < devCount; j++) {
+    //dev가 i>j 인 것임을 가정한다.
+    for (int i = 1; i <= devCount; i++) {
+      for (int j = 1; j <= devCount; j++) {
         if(i==j) continue;
         boolean isSatisfied = true;
         //가정이 모든 게임 결과를 만족시키는지 확인한다.
