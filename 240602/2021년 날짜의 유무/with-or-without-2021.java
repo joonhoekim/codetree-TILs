@@ -16,6 +16,9 @@ public class Main {
 
   public static Boolean dateValidator(int M, int D) {
     Boolean isValid = true;
+    if (M > 12) {
+      isValid = false;
+    }
     if (M == 2) {
       if (D > 28) {
         isValid = false;
@@ -29,7 +32,8 @@ public class Main {
       if (D > 30) {
         isValid = false;
       }
-    }
+    } 
+    
     return isValid;
   }
 }
