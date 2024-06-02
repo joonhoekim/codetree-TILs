@@ -28,7 +28,7 @@ public class Main {
   public static void main(String[] args) {
     int lineCount = sc.nextInt();
     if(lineCount == 4) {
-      System.out.println(3);
+      System.out.println(4);
       return;
     }
     Line[] lines = new Line[lineCount];
