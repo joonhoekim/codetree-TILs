@@ -1,6 +1,6 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 class Line {
     int startX;
@@ -13,19 +13,21 @@ class Line {
 }
 
 public class Main {
-    static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    public static void main(String[] args) {
-        int lineCount = sc.nextInt();
+        // 입력 처리
+        int lineCount = Integer.parseInt(br.readLine());
         Line[] lines = new Line[lineCount];
         for (int i = 0; i < lineCount; i++) {
-            lines[i] = new Line(sc.nextInt(), sc.nextInt());
+            String[] input = br.readLine().split(" ");
+            lines[i] = new Line(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
         }
 
         int n = 3;
         int answer = 0;
 
-        // 모든 조합 생성
         List<int[]> combinations = generateCombinations(lineCount, n);
         for (int[] combination : combinations) {
             if (checkUnoverwrappedWithExclusion(lines, combination)) {
@@ -33,7 +35,11 @@ public class Main {
             }
         }
 
-        System.out.println(answer);
+        bw.write(String.valueOf(answer));
+        bw.newLine();
+        bw.flush();
+        bw.close();
+        br.close();
     }
 
     private static boolean checkUnoverwrappedWithExclusion(Line[] lines, int[] excludedIdx) {
