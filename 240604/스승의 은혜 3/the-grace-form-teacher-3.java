@@ -50,7 +50,7 @@ public class Main {
                 int cost = costCloned[j].price + costCloned[j].shippingCost;
                 totalPrice += cost;
 
-                if (totalPrice >= budget) {
+                if (totalPrice > budget) {
                     break;
                 }
                 boughtCount++;
