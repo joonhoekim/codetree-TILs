@@ -1,5 +1,5 @@
 //이전에 풀었던 문제와 동일한데, 배송비 조건이 추가되었음
-//왜 틀리는지 몰랐는데, 전부 다 구매 가능했을 때를 제대로 고려하지 못했었네!
+//경계: 하나도 못 살때, 제한된 수를 살 수 있을 때, 다 살수 있을 때
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -49,13 +49,12 @@ public class Main {
             for (int j = 0; j < costCloned.length; j++) {
                 int cost = costCloned[i].price + costCloned[i].shippingCost;
                 totalPrice += cost;
-                boughtCount++;
-                
 
-                if(totalPrice > budget) {
-                    maxBuyCount = Math.max(maxBuyCount, --boughtCount);
+                if (totalPrice > budget) {
                     break;
                 }
+                boughtCount++;
+                maxBuyCount = Math.max(maxBuyCount, boughtCount);
             }
         }
 
