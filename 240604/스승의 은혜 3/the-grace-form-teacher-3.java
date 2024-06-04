@@ -4,8 +4,6 @@
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 class Cost {
     int price;
@@ -47,22 +45,17 @@ public class Main {
             costCloned[i].price = costCloned[i].price / 2;
             Arrays.sort(costCloned, totalPriceAsc);
             int totalPrice = 0;
-            boolean allBought = true;
+            int boughtCount = 0;
             for (int j = 0; j < costCloned.length; j++) {
                 int cost = costCloned[i].price + costCloned[i].shippingCost;
                 totalPrice += cost;
-//                System.out.printf("%d 구매했습니다. 잔액: %d\n", totalPrice, budget-totalPrice);
+                boughtCount++;
+                
 
                 if(totalPrice > budget) {
-                    maxBuyCount = Math.max(maxBuyCount, j);
-//                    System.out.printf("이번 루프는 %d 에서 멈춤\n", j);
-                    allBought = false;
+                    maxBuyCount = Math.max(maxBuyCount, --boughtCount);
                     break;
-                } 
-            }
-            if(allBought) {
-                maxBuyCount = studentCount;
-                break;
+                }
             }
         }
 
