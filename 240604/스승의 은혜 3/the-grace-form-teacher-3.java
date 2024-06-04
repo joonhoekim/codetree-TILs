@@ -1,5 +1,6 @@
 //이전에 풀었던 문제와 동일한데, 배송비 조건이 추가되었음
 //경계: 하나도 못 살때, 제한된 수를 살 수 있을 때, 다 살수 있을 때
+//clone()은 얕은 복사!!!
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -41,7 +42,10 @@ public class Main {
         int maxBuyCount = 0;
         for (int i = 0; i < costs.length; i++) {
 //            System.out.printf("---할인idx: %d, 할인전 가격: %d ---\n",i,costs[i].price);
-            Cost[] costCloned = costs.clone();
+            Cost[] costCloned = new Cost[studentCount];
+            for (int j = 0; j < studentCount; j++) {
+                costCloned[j] = new Cost(costs[j].price, costs[j].shippingCost);
+            }
             costCloned[i].price = costCloned[i].price / 2;
             Arrays.sort(costCloned, totalPriceAsc);
             int totalPrice = 0;
