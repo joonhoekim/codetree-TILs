@@ -1,4 +1,5 @@
 //이전에 풀었던 문제와 동일한데, 배송비 조건이 추가되었음
+//왜 틀리는지 몰랐는데, 전부 다 구매 가능했을 때를 제대로 고려하지 못했었네!
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -23,12 +24,12 @@ public class Main {
 
         int studentCount = sc.nextInt();
         int budget = sc.nextInt();
-        Cost[] clostCloned = new Cost[studentCount];
+        Cost[] costs = new Cost[studentCount];
 
         for (int i = 0; i < studentCount; i++) {
             int price = sc.nextInt();
             int shippingCost = sc.nextInt();
-            clostCloned[i] = new Cost(price, shippingCost);
+            costs[i] = new Cost(price, shippingCost);
         }
 
         Comparator<Cost> totalPriceAsc = new Comparator<Cost>() {
@@ -39,23 +40,33 @@ public class Main {
         };
 
 
-        int answer = 0;
-        for (int i = 0; i < clostCloned.length; i++) {
-            Cost[] costCloned = clostCloned.clone();
-            clostCloned[i].price = clostCloned[i].price / 2;
+        int maxBuyCount = 0;
+        for (int i = 0; i < costs.length; i++) {
+//            System.out.printf("---할인idx: %d, 할인전 가격: %d ---\n",i,costs[i].price);
+            Cost[] costCloned = costs.clone();
+            costCloned[i].price = costCloned[i].price / 2;
             Arrays.sort(costCloned, totalPriceAsc);
             int totalPrice = 0;
+            boolean allBought = true;
             for (int j = 0; j < costCloned.length; j++) {
                 int cost = costCloned[i].price + costCloned[i].shippingCost;
                 totalPrice += cost;
+//                System.out.printf("%d 구매했습니다. 잔액: %d\n", totalPrice, budget-totalPrice);
+
                 if(totalPrice > budget) {
-                    answer = Math.max(answer, j);
+                    maxBuyCount = Math.max(maxBuyCount, j);
+//                    System.out.printf("이번 루프는 %d 에서 멈춤\n", j);
+                    allBought = false;
                     break;
-                }
+                } 
+            }
+            if(allBought) {
+                maxBuyCount = studentCount;
+                break;
             }
         }
 
-        System.out.println(answer);
+        System.out.println(maxBuyCount);
 
     }
 }
