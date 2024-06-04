@@ -54,8 +54,8 @@ public class Main {
                     break;
                 }
                 boughtCount++;
-                maxBuyCount = Math.max(maxBuyCount, boughtCount);
             }
+            maxBuyCount = Math.max(maxBuyCount, boughtCount);
         }
 
         System.out.println(maxBuyCount);
