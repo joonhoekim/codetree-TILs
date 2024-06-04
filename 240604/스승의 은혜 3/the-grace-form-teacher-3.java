@@ -47,10 +47,10 @@ public class Main {
             int totalPrice = 0;
             int boughtCount = 0;
             for (int j = 0; j < costCloned.length; j++) {
-                int cost = costCloned[i].price + costCloned[i].shippingCost;
+                int cost = costCloned[j].price + costCloned[j].shippingCost;
                 totalPrice += cost;
 
-                if (totalPrice > budget) {
+                if (totalPrice >= budget) {
                     break;
                 }
                 boughtCount++;
