@@ -1,12 +1,10 @@
-//이전에 풀었던 문제와 동일한데, 배송비 조건이 추가되었음
-//경계: 하나도 못 살때, 제한된 수를 살 수 있을 때, 다 살수 있을 때
-//clone()은 얕은 복사, 별도 구현 해줘야 한다.
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
-class Cost implements Cloneable{
+class Cost {
     int price;
     int shippingCost;
 
@@ -14,32 +12,21 @@ class Cost implements Cloneable{
         this.price = price;
         this.shippingCost = shippingCost;
     }
-
-    @Override
-    public Object clone() {
-        Object obj = null;
-        try {
-            obj = super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        return obj;
-    }
-    
 }
 
 public class Main {
-    static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-    public static void main(String[] args) {
-
-        int studentCount = sc.nextInt();
-        int budget = sc.nextInt();
+        int studentCount = Integer.parseInt(st.nextToken());
+        int budget = Integer.parseInt(st.nextToken());
         Cost[] costs = new Cost[studentCount];
 
         for (int i = 0; i < studentCount; i++) {
-            int price = sc.nextInt();
-            int shippingCost = sc.nextInt();
+            st = new StringTokenizer(br.readLine());
+            int price = Integer.parseInt(st.nextToken());
+            int shippingCost = Integer.parseInt(st.nextToken());
             costs[i] = new Cost(price, shippingCost);
         }
 
@@ -50,12 +37,12 @@ public class Main {
             }
         };
 
-
         int maxBuyCount = 0;
         for (int i = 0; i < costs.length; i++) {
-//            System.out.printf("---할인idx: %d, 할인전 가격: %d ---\n",i,costs[i].price);
-
-            Cost[] costCloned = costs.clone();
+            Cost[] costCloned = new Cost[studentCount];
+            for (int j = 0; j < studentCount; j++) {
+                costCloned[j] = new Cost(costs[j].price, costs[j].shippingCost);
+            }
             costCloned[i].price = costCloned[i].price / 2;
             Arrays.sort(costCloned, totalPriceAsc);
             int totalPrice = 0;
@@ -73,6 +60,5 @@ public class Main {
         }
 
         System.out.println(maxBuyCount);
-
     }
 }
