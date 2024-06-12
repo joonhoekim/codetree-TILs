@@ -20,7 +20,7 @@ public class Main {
 
   public static int findMax(int n, int[] arr) {
     if (n == 1)
-      return arr[n];
+      return arr[n-1];
 
     return Math.max(findMax(n - 1, arr), arr[n-1]);
   }
