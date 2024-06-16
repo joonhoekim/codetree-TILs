@@ -1,6 +1,11 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 class Pair {
 
@@ -24,6 +29,7 @@ class Pair {
     Pair pair = (Pair) o;
     return min == pair.min && max == pair.max;
   }
+
 }
 
 class PairCounter {
@@ -50,17 +56,21 @@ class PairCounter {
 
 public class Main {
 
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n = sc.nextInt();
-    int m = sc.nextInt();
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+    StringTokenizer st = new StringTokenizer(br.readLine());
+    int n = Integer.parseInt(st.nextToken());
+    int m = Integer.parseInt(st.nextToken());
 
     PairCounter counter = new PairCounter();
     int globalMax = 0;
 
     for (int i = 0; i < m; i++) {
-      int a = sc.nextInt();
-      int b = sc.nextInt();
+      st = new StringTokenizer(br.readLine());
+      int a = Integer.parseInt(st.nextToken());
+      int b = Integer.parseInt(st.nextToken());
       if (b < a) {
         int temp = a;
         a = b;
@@ -69,6 +79,9 @@ public class Main {
       globalMax = Math.max(globalMax, counter.addPair(a, b));
     }
 
-    System.out.println(globalMax);
+    bw.write(String.valueOf(globalMax));
+    bw.flush();
+    bw.close();
+    br.close();
   }
 }
