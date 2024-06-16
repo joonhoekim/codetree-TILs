@@ -1,87 +1,42 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.StringTokenizer;
-
-class Pair {
-
-  int min;
-  int max;
-  int count;
-
-  Pair(int min, int max) {
-    this.min = min;
-    this.max = max;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (getClass() != o.getClass()) {
-      return false;
-    }
-    Pair pair = (Pair) o;
-    return min == pair.min && max == pair.max;
-  }
-
-}
-
-class PairCounter {
-
-  private Set<Pair> set;
-
-  public PairCounter() {
-    set = new HashSet<>();
-  }
-
-  public int addPair(int a, int b) {
-    Pair newPair = new Pair(a, b);
-    for (Pair pair : set) {
-      if (pair.equals(newPair)) {
-        pair.count++;
-        return pair.count;
-      }
-    }
-    newPair.count = 1;
-    set.add(newPair);
-    return newPair.count;
-  }
-}
+//이전 코드는 작성하는데 시간이 많이 든다. 비효율적이지만 더 짧게 푸는 법...
+import java.util.Scanner;
 
 public class Main {
 
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+  public static final int MAX_M = 100;
+  public static int[] a = new int[MAX_M];
+  public static int[] b = new int[MAX_M];
+  static int n;
+  static int m;
 
-    StringTokenizer st = new StringTokenizer(br.readLine());
-    int n = Integer.parseInt(st.nextToken());
-    int m = Integer.parseInt(st.nextToken());
-
-    PairCounter counter = new PairCounter();
-    int globalMax = 0;
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    n = sc.nextInt();
+    m = sc.nextInt();
 
     for (int i = 0; i < m; i++) {
-      st = new StringTokenizer(br.readLine());
-      int a = Integer.parseInt(st.nextToken());
-      int b = Integer.parseInt(st.nextToken());
-      if (b < a) {
-        int temp = a;
-        a = b;
-        b = temp;
-      }
-      globalMax = Math.max(globalMax, counter.addPair(a, b));
+      a[i] = sc.nextInt();
+      b[i] = sc.nextInt();
     }
 
-    bw.write(String.valueOf(globalMax));
-    bw.flush();
-    bw.close();
-    br.close();
+    int globalMax = 0;
+    for (int i = 1; i <= n ; i++) {
+      for( int j = i + 1; j <=n; j++) {
+        globalMax = Math.max(globalMax, countDuplicated(i, j));
+      }
+    }
+
+    System.out.println(globalMax);
   }
+
+  static int countDuplicated(int first, int second) {
+    int count = 0;
+    for (int i = 0; i < m; i++) {
+      if( (first == a[i] && second == b[i]) || (first == b[i] && second == a[i])) {
+        count++;
+      }
+    }
+    return count;
+  }
+
 }
