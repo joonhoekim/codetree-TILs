@@ -1,37 +1,46 @@
-import java.util.Scanner;
-import java.util.Arrays;
+import java.io.*;
+import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int[] arr = new int[sc.nextInt()];
-        int maxDiff = sc.nextInt();
-
-        for(int i=0; i<arr.length; i++) {
-            arr[i]=sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
+        int n = Integer.parseInt(st.nextToken());
+        int maxDiff = Integer.parseInt(st.nextToken());
+        
+        int[] arr = new int[n];
+        
+        for (int i = 0; i < n; i++) {
+            st = new StringTokenizer(br.readLine());
+            arr[i] = Integer.parseInt(st.nextToken());
         }
-
+        
         Arrays.sort(arr);
-
+        
+        int left = 1;
+        int right = n;
         int ans = 0;
         
-        loop: for(int range=arr.length; range>0; range--) {
-            for(int startIdx=0; startIdx<=arr.length-range; startIdx++) {
-                if(sol(arr, maxDiff, startIdx, range)) {
-                    ans = range;
-                    break loop;
-                }
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (isValid(arr, maxDiff, mid)) {
+                ans = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
         }
-
+        
         System.out.println(ans);
     }
-
-    static boolean sol(int[] arr, int maxDiff, int startIdx, int range) {
-        if(arr[startIdx+range-1] - arr[startIdx] <= maxDiff ) {
-            return true;
+    
+    static boolean isValid(int[] arr, int maxDiff, int range) {
+        for (int i = 0; i <= arr.length - range; i++) {
+            if (arr[i + range - 1] - arr[i] <= maxDiff) {
+                return true;
+            }
         }
-
         return false;
     }
 }
