@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt(); //stone bridge, number of stones.
-        int k = sc.nextInt(); //max jump length.
+        int maxDiff = sc.nextInt(); //max jump length.
         
         int[] arr = new int[n];
         int[] arrCopied = new int[n];
@@ -17,14 +17,14 @@ public class Main {
 
         int outerMin = Integer.MAX_VALUE;
         for(int innerMax=MAX_VAL; innerMax >= Math.max(arr[0], arr[n-1]); innerMax--) {
-            if(isPossible(innerMax, arr))
+            if(isPossible(innerMax, arr, maxDiff))
                 outerMin = Math.min(outerMin, innerMax);
         }
 
         System.out.println(outerMin);
     }
 
-    static boolean isPossible(int innerMax, int[] arr) {
+    static boolean isPossible(int innerMax, int[] arr, int maxDiff) {
         int[] availableIndexes = new int[arr.length];
         int count = 0;
 
@@ -36,7 +36,7 @@ public class Main {
 
         for(int i=1; i<count; i++) {
             int dist = availableIndexes[i] - availableIndexes[i-1];
-            if(dist>2) {
+            if(dist>maxDiff) {
                 return false;
             }
         }
