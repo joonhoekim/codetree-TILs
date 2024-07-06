@@ -17,12 +17,11 @@ public class Main {
     int[] numOfDays = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     while (true) {
+      day++;
+      elapsedDays++;
       if (month == m2 && day == d2) {
         break;
       }
-
-      day++;
-      elapsedDays++;
 
       if (numOfDays[month] == day) {
         month++;
