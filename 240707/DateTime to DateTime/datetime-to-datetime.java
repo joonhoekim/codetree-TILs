@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -36,18 +38,7 @@ public class Main {
     System.out.println(elapsedMinutes);
   }
   public static int isBefore(int a, int b, int c) {
-    if (a < 11) {
-      return -1;
-    } else {
-      if (b < 11) {
-        return -1;
-      } else {
-        if (c < 11) {
-          return -1;
-        }
-      }
-    }
-    return 0;
+    return (a * 24 * 60 + b * 60 + c) - (11 * 24 * 60 + 11 * 60 + 11) < 0 ? -1 : 0;
   }
 
 }
