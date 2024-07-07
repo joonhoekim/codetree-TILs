@@ -13,24 +13,41 @@ public class Main {
     int b = sc.nextInt();
     int c = sc.nextInt();
 
-    int elapsedMinutes = 0;
+    int elapsedMinutes = isBefore(a, b, c);
 
-    while (day != a || hour != b || min != c) {
+    if (elapsedMinutes != -1) {
+      while (day != a || hour != b || min != c) {
 
-      min++;
-      elapsedMinutes++;
+        min++;
+        elapsedMinutes++;
 
-      if (min == 60) {
-        hour++;
-        min = 0;
-      }
+        if (min == 60) {
+          hour++;
+          min = 0;
+        }
 
-      if (hour == 24) {
-        day++;
-        hour = 0;
+        if (hour == 24) {
+          day++;
+          hour = 0;
+        }
       }
     }
 
     System.out.println(elapsedMinutes);
   }
+  public static int isBefore(int a, int b, int c) {
+    if (a < 11) {
+      return -1;
+    } else {
+      if (b < 11) {
+        return -1;
+      } else {
+        if (c < 11) {
+          return -1;
+        }
+      }
+    }
+    return 0;
+  }
+
 }
