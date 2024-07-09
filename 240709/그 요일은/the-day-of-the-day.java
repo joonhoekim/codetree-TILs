@@ -15,15 +15,13 @@ public class Main {
   }
 
   public static int numOfDay(String s) {
-    return switch (s) {
-      case "Mon" -> 0;
-      case "Tue" -> 1;
-      case "Wed" -> 2;
-      case "Thu" -> 3;
-      case "Fri" -> 4;
-      case "Sat" -> 5;
-      default -> 6;
-    };
+    if (s.equals("Mon")) return 0;
+    else if(s.equals("Tue")) return 1;
+    else if(s.equals("Wed")) return 2;
+    else if(s.equals("Thu")) return 3;
+    else if(s.equals("Fri")) return 4;
+    else if(s.equals("Sat")) return 5;
+    return 6;
   }
 
   public static void main(String[] args) {
