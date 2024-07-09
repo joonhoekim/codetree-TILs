@@ -13,6 +13,19 @@ public class Main {
 
     return totalDays;
   }
+
+  public static int numOfDay(String s) {
+    return switch (s) {
+      case "Mon" -> 0;
+      case "Tue" -> 1;
+      case "Wed" -> 2;
+      case "Thu" -> 3;
+      case "Fri" -> 4;
+      case "Sat" -> 5;
+      default -> 6;
+    };
+  }
+
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
@@ -23,29 +36,20 @@ public class Main {
 
     String A = sc.next();
 
-    String[] weekday = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+    int startDate =  countDays(m1, d1);
+    int endDate = countDays(m2, d2);
 
-    int totalDays = countDays(m2, d2) - countDays(m1, d1);
-
-    while (totalDays < 0) {
-      totalDays += 7;
-    }
-
-    int startDayIndex = -1;
-    for (int i = 0; i < weekday.length; i++) {
-      if (weekday[i].equals(A)) {
-        startDayIndex = i;
-        break;
-      }
-    }
+    int startDayIndex = numOfDay(A);
 
     int count = 0;
-    for (int i = 0; i <= totalDays; i++) {
-      if ((startDayIndex + i) % 7 == startDayIndex) {
+
+    for(int date = startDate; date <= endDate; date++) {
+      if(startDayIndex == numOfDay(A)) {
         count++;
       }
+      startDayIndex = (startDayIndex + 1) % 7;
     }
-    
+
     System.out.println(count);
   }
 }
