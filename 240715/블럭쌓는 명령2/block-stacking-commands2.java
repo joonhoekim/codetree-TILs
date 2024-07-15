@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -17,14 +18,7 @@ public class Main {
         area[j]++;
       }
     }
-
-    int maxBlock = Integer.MIN_VALUE;
-
-    for (int curBlock : area) {
-      if (maxBlock < curBlock) {
-        maxBlock = curBlock;
-      }
-    }
+    int maxBlock = Arrays.stream(area).max().getAsInt();
 
     System.out.println(maxBlock);
   }
