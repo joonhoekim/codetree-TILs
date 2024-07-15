@@ -15,10 +15,16 @@ public class Main {
       int B = sc.nextInt();
 
       for (int j = A; j <= B; j++) {
-        area[j]++;
+        area[j-1]++;
       }
     }
-    int maxBlock = Arrays.stream(area).max().getAsInt();
+    int maxBlock = Integer.MIN_VALUE;
+
+    for (int curBlock : area) {
+      if (maxBlock < curBlock) {
+        maxBlock = curBlock;
+      }
+    }
 
     System.out.println(maxBlock);
   }
