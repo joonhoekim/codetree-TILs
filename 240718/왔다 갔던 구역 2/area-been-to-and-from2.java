@@ -13,23 +13,32 @@ public class Main {
       int x = sc.nextInt();
       String way = sc.next();
 
+      int startPoint = 0;
+      int endPoint = 0;
 
       if (way.equals("R")) {
-        for (int j = curPoint; j < curPoint+x; j++) {
-          area[j]++;
-        }
-        curPoint += x;
+        startPoint = curPoint;
+        endPoint = curPoint + x;
+        
+        curPoint = endPoint;
+
       } else if (way.equals("L")) {
-        for (int j = curPoint; j > curPoint-x; j--) {
-          area[j]++;
-        }
-        curPoint -= x;
+        startPoint = curPoint - x;
+        endPoint = curPoint;
+        
+        curPoint = startPoint;
       }
+
+
+      for (int j = startPoint; j < endPoint; j++) {
+        area[j]++;
+      }
+
     }
-    int visitedArea = 1;
+    int visitedArea = 0;
 
     for (int i = 0; i < area.length; i++) {
-      if (area[i] > 1 && area[i+1] > 1) {
+      if (area[i] > 1) {
         visitedArea++;
       }
     }
