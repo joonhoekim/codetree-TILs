@@ -20,11 +20,14 @@ public class Main {
     int maxX = Integer.MIN_VALUE;
     int minY = Integer.MAX_VALUE;
     int maxY = Integer.MIN_VALUE;
+    boolean isAreaExist = false;
 
     for (int i = 0; i < arr.length; i++) {
       int[] inArr = arr[i];
       for (int j = 0; j < inArr.length; j++) {
         if (inArr[j] == 1) {
+          isAreaExist = true;
+
           if (i < minX ) {
             minX = i;
           }
@@ -43,8 +46,11 @@ public class Main {
         }
       }
     }
-
-    System.out.println((maxX - minX) * (maxY - minY));
+    if (isAreaExist) {
+      System.out.println((maxX - minX) * (maxY - minY));
+    } else {
+      System.out.println(0);
+    }
 
 
   }
