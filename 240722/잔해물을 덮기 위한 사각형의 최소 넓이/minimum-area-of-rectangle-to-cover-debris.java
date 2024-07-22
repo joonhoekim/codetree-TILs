@@ -16,10 +16,10 @@ public class Main {
       areaChecker(x1, y1, x2, y2, i);
     }
 
-    int minX = Integer.MAX_VALUE;
-    int maxX = Integer.MIN_VALUE;
-    int minY = Integer.MAX_VALUE;
-    int maxY = Integer.MIN_VALUE;
+    int minX = 2000;
+    int maxX = 0;
+    int minY = 2000;
+    int maxY = 0;
     boolean isAreaExist = false;
 
     for (int i = 0; i < arr.length; i++) {
@@ -47,7 +47,7 @@ public class Main {
       }
     }
     if (isAreaExist) {
-      System.out.println((maxX - minX) * (maxY - minY));
+      System.out.println((maxX - minX + 1) * (maxY - minY + 1));
     } else {
       System.out.println(0);
     }
@@ -60,8 +60,8 @@ public class Main {
       value = 1;
     }
 
-    for (int i = x1; i <= x2; i++) {
-      for (int j = y1; j <= y2; j++) {
+    for (int i = x1; i < x2; i++) {
+      for (int j = y1; j < y2; j++) {
         arr[i][j] = value;
       }
     }
