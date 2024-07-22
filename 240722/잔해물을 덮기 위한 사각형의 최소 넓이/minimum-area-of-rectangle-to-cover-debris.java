@@ -45,10 +45,7 @@ public class Main {
     }
 
     System.out.println((maxX - minX) * (maxY - minY));
-    System.out.println(minX);
-    System.out.println(maxX);
-    System.out.println(minY);
-    System.out.println(maxY);
+
 
   }
   private static void areaChecker(int x1, int y1, int x2, int y2, int idx) {
