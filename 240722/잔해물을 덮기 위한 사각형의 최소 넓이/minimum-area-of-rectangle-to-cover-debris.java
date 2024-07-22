@@ -25,12 +25,19 @@ public class Main {
       int[] inArr = arr[i];
       for (int j = 0; j < inArr.length; j++) {
         if (inArr[j] == 1) {
-          if (i < minX || j < minY) {
+          if (i < minX ) {
             minX = i;
+          }
+
+          if (j < minY) {
             minY = j;
           }
-          if (i > maxX || j > maxY) {
+
+          if (i > maxX) {
             maxX = i;
+          }
+
+          if (j > maxY) {
             maxY = j;
           }
         }
@@ -38,6 +45,10 @@ public class Main {
     }
 
     System.out.println((maxX - minX) * (maxY - minY));
+    System.out.println(minX);
+    System.out.println(maxX);
+    System.out.println(minY);
+    System.out.println(maxY);
 
   }
   private static void areaChecker(int x1, int y1, int x2, int y2, int idx) {
