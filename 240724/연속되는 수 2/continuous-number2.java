@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -11,26 +12,27 @@ public class Main {
       arr[i] = sc.nextInt();
     }
 
-    int maxValue = 0;
+
     int count = 0;
+    ArrayList<Integer> list = new ArrayList<>();
 
     if (N < 2) {
       System.out.println(1);
     } else {
 
-      for (int i = 0; i < arr.length-1; i++) {
-        if (arr[i] != arr[i+1]) {
+      for (int i = 0; i < arr.length; i++) {
+        if (i == 0 || arr[i] != arr[i-1]) {
+          list.add(count);
           count = 1;
         } else {
           ++count;
-          if (maxValue < count) {
-            maxValue = count;
-          }
         }
       }
-
-      System.out.println(maxValue);
+      list.add(count);
+      
+      System.out.println(list.stream().mapToInt(v -> v).max().getAsInt());
     }
+
 
 
 
