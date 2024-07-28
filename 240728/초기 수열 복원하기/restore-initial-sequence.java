@@ -1,5 +1,3 @@
-package exhaustiveSearch.초기수열복원하기;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
