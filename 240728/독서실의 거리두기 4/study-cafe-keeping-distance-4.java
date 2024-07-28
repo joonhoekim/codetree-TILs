@@ -53,7 +53,7 @@ public class Main {
 
     }
 
-    bw.write(String.valueOf(globalMax);
+    bw.write(String.valueOf(globalMax));
     bw.close();
     br.close();
   }
