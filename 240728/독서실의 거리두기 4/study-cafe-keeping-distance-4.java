@@ -1,11 +1,15 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class Main {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
+  public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    int numberOfSeats = sc.nextInt();
-    String currentSeatStatus = sc.next();
+    int numberOfSeats = Integer.parseInt(br.readLine());
+    String currentSeatStatus = br.readLine();
 
     //연속된 빈 공간의 길이와 위치를 저장한다음 정렬하는 방법도 있겠지만,
     //N명의 사람을 넣는 경우 넣고 나서도 또 자리할당이 가능하므로, 배치한 이후도 생각해야 한다.
@@ -20,10 +24,9 @@ public class Main {
           continue;
 
         //새로운 String을 만들어서 두 사람을 넣어준다.
-        StringBuilder sb = new StringBuilder(currentSeatStatus);
-        sb.setCharAt(firstPersonIdx, '1');
-        sb.setCharAt(secondPersonIdx, '1');
-        String renewedSeatStatus = sb.toString();
+        StringBuilder renewedSeatStatus = new StringBuilder(currentSeatStatus);
+        renewedSeatStatus.setCharAt(firstPersonIdx, '1');
+        renewedSeatStatus.setCharAt(secondPersonIdx, '1');
 
 
         //로컬에서는 빈 공간의 거리 최솟값들을 구하는데, 글로벌로는 그 최솟값의 최대값을 구해본다.
@@ -36,7 +39,7 @@ public class Main {
           if (renewedSeatStatus.charAt(idx) == '1') {
             currentPersonIdx = idx;
             if (pastPersonIdx != -1) {
-              //거리는 idx 차이로 문제에 정의되어 있음 
+              //거리는 idx 차이로 문제에 정의되어 있음
               int currentDist = currentPersonIdx - pastPersonIdx;
               localMinDist = Math.min(localMinDist, currentDist);
             }
@@ -50,6 +53,8 @@ public class Main {
 
     }
 
-    System.out.println(globalMax);
+    bw.write(String.valueOf(globalMax);
+    bw.close();
+    br.close();
   }
 }
