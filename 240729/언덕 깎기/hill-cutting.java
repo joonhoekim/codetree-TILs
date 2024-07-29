@@ -26,9 +26,9 @@ public class Main {
     int globalMinSum = Integer.MAX_VALUE;
 
     //아래를 올리는 경우
-    for (int bottom = minH; bottom <= maxH; bottom++) {
+    for (int bottom = minH; bottom <= maxH - MAX_DIFF; bottom++) {
       //위를 내리는 경우
-      for (int top = maxH; top >= minH; top--) {
+      for (int top = maxH; top >= minH + MAX_DIFF; top--) {
 
         //일단 MAX_DIFF 안으로 들어왔는지 확인하고, 아니면 이번 반복은 그냥 넘김
         if (top - bottom > MAX_DIFF) {
@@ -40,7 +40,7 @@ public class Main {
 
       }
     }
-    
+
     System.out.println(globalMinSum);
   }
 
