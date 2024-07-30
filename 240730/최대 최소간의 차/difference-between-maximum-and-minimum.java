@@ -25,73 +25,51 @@ public class Main {
 
     int min = Integer.MAX_VALUE;
     int max = Integer.MIN_VALUE;
-    int minCount = 0;
-    int maxCount = 0;
 
     for (int i = 0; i < n; i++) {
       arr[i] = sc.nextInt();
-
-      //반복이 생기겠지만 나중에 리팩토링
-      if (arr[i] < min) {
-        min = arr[i];
-        minCount = 1;
-      } else if (arr[i] == min) {
-        minCount++;
-      } else if (arr[i] > max) {
-        max = arr[i];
-        maxCount = 1;
-      } else if (arr[i] == max) {
-        maxCount++;
-      }
+      min = Math.min(min, arr[i]);
+      max = Math.max(max, arr[i]);
     }
 
     long cost = 0;
-    while (true) {
-      if (max - min <= k) {
-        System.out.println(cost);
-        break;
+    while (max - min > k) {
+
+      int minCount = 0;
+      int maxCount = 0;
+
+      for (int i = 0; i < n; i++) {
+        if (arr[i] == min) {
+          minCount++;
+        }
+        if (arr[i] == max) {
+          maxCount++;
+        }
       }
 
       //탑을 깎아야 하는 경우
       if (minCount > maxCount) {
+        cost += maxCount;
+        max--;
         for (int i = 0; i < n; i++) {
-          if (arr[i] == max) {
+          if (arr[i] == max + 1) {
             arr[i]--;
-            cost++;
           }
         }
       }
       //바텀을 높여야 하는 경우
       else {
+        cost += minCount;
+        min++;
         for (int i = 0; i < n; i++) {
-          if (arr[i] == min) {
+          if (arr[i] == min - 1) {
             arr[i]++;
-            cost++;
           }
-        }
-      }
-
-      //min, max, count 갱신
-      min = Integer.MAX_VALUE;
-      max = Integer.MIN_VALUE;
-      minCount = 0;
-      maxCount = 0;
-      for (int i = 0; i < n; i++) {
-        //반복이 생기겠지만 나중에 리팩토링
-        if (arr[i] < min) {
-          min = arr[i];
-          minCount = 1;
-        } else if (arr[i] == min) {
-          minCount++;
-        } else if (arr[i] > max) {
-          max = arr[i];
-          maxCount = 1;
-        } else if (arr[i] == max) {
-          maxCount++;
         }
       }
     }
 
+    System.out.println(cost);
 
   }
 
