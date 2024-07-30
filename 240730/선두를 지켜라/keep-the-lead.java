@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class Main {
 
-
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
@@ -12,40 +11,40 @@ public class Main {
     ArrayList<Integer> A = new ArrayList<>();
     ArrayList<Integer> B = new ArrayList<>();
 
-    int count = 0;
-
     move(sc, N, A);
     move(sc, M, B);
 
-    boolean[] changes = new boolean[A.size()];
+    int leader = 0;
+    int count = 0;
 
-    for (int i = 1; i < A.size(); i++) {
+    for (int i = 0; i < A.size(); i++) {
       if (A.get(i) > B.get(i)) {
-        changes[i] = true;
-      } else if (A.get(i) == B.get(i)) {
-        changes[i] = changes[i-1];
-      } else {
-        changes[i] = false;
+        if (leader == 2) {
+          count++;
+        }
+        leader = 1;
+
+      } else if (A.get(i) < B.get(i)) {
+        if (leader == 1) {
+          count++;
+        }
+        leader = 2;
       }
     }
 
-    for (int i = 1; i < changes.length; i++) {
-      if (changes[i-1] != changes[i]) {
-        count++;
-      }
-    }
     System.out.println(count);
   }
   public static void move(Scanner sc, int n, ArrayList<Integer> list) {
+    int distance = 0;
+
     for (int i = 0; i < n; i++) {
       int v = sc.nextInt();
       int t = sc.nextInt();
-      int distance = 0;
 
       for (int j = 0; j < t; j++) {
-        list.add(distance + v);
+        distance += v;
+        list.add(distance);
       }
     }
   }
-
 }
