@@ -1,43 +1,41 @@
+import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int k = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
+        
         int[] arr = new int[n];
-        
+        st = new StringTokenizer(br.readLine());
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
         for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
+            arr[i] = Integer.parseInt(st.nextToken());
+            min = Math.min(min, arr[i]);
+            max = Math.max(max, arr[i]);
         }
         
-        Arrays.sort(arr);
-        
-        int left = 0, right = 0;
-        int maxLength = 0;
-        int bestLeft = 0, bestRight = 0;
-        
-        while (right < n) {
-            if (arr[right] - arr[left] <= k) {
-                if (right - left + 1 > maxLength) {
-                    maxLength = right - left + 1;
-                    bestLeft = left;
-                    bestRight = right;
-                }
-                right++;
-            } else {
-                left++;
+        long result = Long.MAX_VALUE;
+        for (int lower = min; lower <= max; lower++) {
+            int upper = lower + k;
+            long cost = 0;
+            for (int num : arr) {
+                if (num < lower) cost += lower - num;
+                else if (num > upper) cost += num - upper;
             }
+            result = Math.min(result, cost);
         }
         
-        long cost = 0;
-        for (int i = 0; i < bestLeft; i++) {
-            cost += arr[bestLeft] - arr[i];
-        }
-        for (int i = bestRight + 1; i < n; i++) {
-            cost += arr[i] - arr[bestRight];
-        }
+        bw.write(String.valueOf(result));
+        bw.newLine();
         
-        System.out.println(cost);
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
