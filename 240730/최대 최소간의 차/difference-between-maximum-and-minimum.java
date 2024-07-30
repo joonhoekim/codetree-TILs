@@ -45,7 +45,7 @@ public class Main {
       }
     }
 
-    int cost = 0;
+    long cost = 0;
     while (true) {
       if (max - min <= k) {
         System.out.println(cost);
