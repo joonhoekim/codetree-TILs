@@ -22,19 +22,20 @@ public class Main {
     int[][] points = new int[n][2];
     int maxX1 = Integer.MIN_VALUE;
     int minX2 = Integer.MAX_VALUE;
-    
+    final int X1 = 0;
+    final int X2 = 1;
 
     for (int i = 0; i < n; i++) {
       //start
-      points[i][0] = sc.nextInt();
+      points[i][X1] = sc.nextInt();
       //end
-      points[i][1] = sc.nextInt();
-      
-      maxX1 = Math.max(maxX1, points[i][0]);
-      minX2 = Math.min(minX2, points[i][1]);
+      points[i][X2] = sc.nextInt();
+
+      maxX1 = Math.max(maxX1, points[i][X1]);
+      minX2 = Math.min(minX2, points[i][X2]);
     }
 
-    if (maxX1 < minX2) {
+    if (maxX1 > minX2) {
       System.out.println("No");
     } else {
       System.out.println("Yes");
