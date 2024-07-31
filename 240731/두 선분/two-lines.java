@@ -22,28 +22,35 @@ public class Main {
     final int POINTS_COUNT = 2;
     int[][] points = new int[POINTS_COUNT][2];
 
-    //선분이 존재를 1개씩 더하는 수평선을 표현한 배열
-    final int MAX_NUM = 100;
-    int[] arr = new int[MAX_NUM + 1];
-
     for (int i = 0; i < POINTS_COUNT; i++) {
       //start
       points[i][0] = sc.nextInt();
       //end
       points[i][1] = sc.nextInt();
 
-      for (int j = points[i][0]; j <= points[i][1]; j++) {
-        arr[j]++;
-      }
     }
 
     boolean isSatisfied = false;
-    for (int i = 1; i < MAX_NUM; i++) {
-      if (arr[i] > 1) {
-        isSatisfied = true;
-        break;
+    loop:
+    for (int i = 0; i < POINTS_COUNT; i++) {
+      for (int j = 0; j < POINTS_COUNT; j++) {
+        //자기 자신은 제외
+        if (i == j) {
+          continue;
+        }
+
+        //시작, 끝 점이 다른 선분 안에 있는지 확인
+        for (int k = 0; k <= 1; k++) {
+          if (points[j][0] <= points[i][k] && points[i][k] <= points[j][1]) {
+            isSatisfied = true;
+            break loop;
+          }
+        }
+
+
       }
     }
+
     if (isSatisfied) {
       System.out.println("intersecting");
     } else {
