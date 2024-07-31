@@ -1,5 +1,3 @@
-package 겹침문제.두선분;
-
 import java.util.Scanner;
 
 public class Main {
