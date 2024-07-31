@@ -17,6 +17,7 @@ public class Main {
      *
      * 설계
      * - 최솟값을 구해야 하니, 1칸만 움직인 사람들의 수를 최대로 만들어야 한다.
+     * - 밀어내는 방법은 다른 다양한 유형에도 적용 가능하다.
      * */
 
     Scanner sc = new Scanner(System.in);
@@ -24,7 +25,6 @@ public class Main {
     int n = sc.nextInt();
     int[] beforePeopleNum = new int[n];
     int[] afterPeopleNum = new int[n];
-    int[] diffPeopleNum = new int[n];
 
     for (int i = 0; i < n; i++) {
       beforePeopleNum[i] = sc.nextInt();
@@ -36,9 +36,12 @@ public class Main {
 
     int sum = 0;
     for (int i = 0; i < n - 1; i++) {
-      diffPeopleNum[i] = beforePeopleNum[i] - afterPeopleNum[i];
+      int diff = beforePeopleNum[i] - afterPeopleNum[i];
 
-      sum += diffPeopleNum[i] * (n - i - 1);
+      //맨 왼쪽 집부터 1칸씩 사람들을 밀어낸다.
+      beforePeopleNum[i] -= diff;
+      beforePeopleNum[i + 1] += diff;
+      sum += diff;
     }
 
     System.out.println(sum);
