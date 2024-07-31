@@ -8,41 +8,36 @@ public class Main {
      * 분석
      * - 선분의 겹침, '모두 겹치는지 확인 필요'
      * 설계
-     * - 수평선을 배열로 두고, 선분이 지나가는 경우 원소에 해당 기록을 남기는 방식
+     * - 스위핑라인 방법 : 수평선을 배열로 두고, 선분이 지나가는 경우 원소에 해당 기록을 남기는 방식
+     *   - 선분의 크기가 커지는 경우 풀 수 없음
+     * - 대수적 완전탐색 방법 : 선분 끝점 값의 최댓값과 선분 시작점 값의 최솟값을 비교하여 풀이하기
+     *   - 선분의 크기가 아주 크더라도 풀 수 있음
      * */
 
+    //대수적 완전탐색 방법
     Scanner sc = new Scanner(System.in);
 
     //start, end 구분
     int n = sc.nextInt();
     int[][] points = new int[n][2];
-
-    //선분이 존재를 1개씩 더하는 수평선을 표현한 배열
-    final int MAX_NUM = 100;
-    int[] arr = new int[MAX_NUM + 1];
+    int maxX1 = Integer.MIN_VALUE;
+    int minX2 = Integer.MAX_VALUE;
+    
 
     for (int i = 0; i < n; i++) {
       //start
       points[i][0] = sc.nextInt();
       //end
       points[i][1] = sc.nextInt();
-
-      for (int j = points[i][0]; j <= points[i][1]; j++) {
-        arr[j]++;
-      }
+      
+      maxX1 = Math.max(maxX1, points[i][0]);
+      minX2 = Math.min(minX2, points[i][1]);
     }
 
-    boolean isSatisfied = false;
-    for (int i = 1; i <= MAX_NUM; i++) {
-      if (arr[i] == n) {
-        isSatisfied = true;
-        break;
-      }
-    }
-    if (isSatisfied) {
-      System.out.println("Yes");
-    } else {
+    if (maxX1 < minX2) {
       System.out.println("No");
+    } else {
+      System.out.println("Yes");
     }
 
 
