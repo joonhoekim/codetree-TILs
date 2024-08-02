@@ -16,13 +16,13 @@ public class Main {
 
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
-    int[][] gameLog = new int[n][n];
+    int[][] gameLog = new int[n][2];
     final int FIRST_USER = 0;
     final int SECOND_USER = 1;
 
     for (int i = 0; i < n; i++) {
-      gameLog[i][0] = sc.nextInt() - 1;
-      gameLog[i][1] = sc.nextInt() - 1;
+      gameLog[i][FIRST_USER] = sc.nextInt() - 1;
+      gameLog[i][SECOND_USER] = sc.nextInt() - 1;
     }
 
     int globalMax = 0;
