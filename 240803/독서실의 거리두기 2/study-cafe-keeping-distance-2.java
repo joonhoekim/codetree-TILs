@@ -59,10 +59,10 @@ public class Main {
     int rightGap = (n - 1) - list.get(list.size() - 1);
 
     // 양 끝쪽에 넣어야 하는 상황인지 확인해본다.
-    if (leftGap > maxDiff) {
+    if (leftGap*2 > maxDiff) {
       insertIdx = 0;
       list.add(insertIdx);
-    } else if (rightGap > maxDiff) {
+    } else if (rightGap *2 > maxDiff) {
       insertIdx = n - 1;
       list.add(insertIdx);
     } else {
