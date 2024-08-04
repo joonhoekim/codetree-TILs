@@ -24,7 +24,6 @@ public class Main {
         * */
 
         //입력 상용구
-        Scanner scanner = new Scanner(System.in);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -58,5 +57,8 @@ public class Main {
         }
 
         System.out.println(count);
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
