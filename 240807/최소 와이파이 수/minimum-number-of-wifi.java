@@ -39,9 +39,25 @@ public class Main {
         int zoneOffset = m;
         int count = 0;
 
+        if (m >= n / 2) {
+            bw.write(String.valueOf(1));
+            bw.flush();
+            bw.close();
+            br.close();
+            return;
+        }
+
         for (int i = m; i < n - m; i++) {
-            //이 지점에 사람이 사는 경우에
-            if (arr[i] == 1) {
+            //현재 포인트의 커버리지 내에 사람이 사는 경우에만 고려
+            boolean isLiving = false;
+            for (int j = i - m; j <= i + m; j++) {
+                if (arr[i] == 1) {
+                    isLiving = true;
+                    break;
+                }
+            }
+
+            if (isLiving) {
                 //현재 지역이 커버되는지 확인하고
                 boolean isCovered = false;
                 for (int j = i - m; j <= i + m; j++) {
