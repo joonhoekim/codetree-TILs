@@ -35,16 +35,26 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         int[] arr = new int[n];
+        boolean hasZero = false;
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
+            if (arr[i] == 0) {
+                hasZero = true;
+            }
         }
 
         Arrays.sort(arr);
-        int mmp = arr[0] * arr[1] * arr[arr.length-1];
+        int mmp = arr[0] * arr[1] * arr[arr.length - 1];
         int ppp = arr[arr.length - 1] * arr[arr.length - 2] * arr[arr.length - 3];
 
         int globalMax = Math.max(mmp,
                                  ppp);
+
+        if (hasZero) {
+            globalMax = Math.max(globalMax,
+                                 0);
+        }
+
         System.out.println(globalMax);
 
     }
