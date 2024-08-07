@@ -40,21 +40,25 @@ public class Main {
         int count = 0;
 
         for (int i = m; i < n - m; i++) {
-            //현재 지역이 커버되는지 확인하고
-            boolean isCovered = false;
-            for (int j = i - m; j <= i + m; j++) {
-                if (wifiCovered[j]) {
-                    isCovered = true;
-                    break;
-                }
-            }
-            //커버되지 않는 경우에 설치 + 커버리지에 기록
-            if (!isCovered) {
-                count++;
+            //이 지점에 사람이 사는 경우에
+            if (arr[i] == 1) {
+                //현재 지역이 커버되는지 확인하고
+                boolean isCovered = false;
                 for (int j = i - m; j <= i + m; j++) {
-                    wifiCovered[j] = true;
+                    if (wifiCovered[j]) {
+                        isCovered = true;
+                        break;
+                    }
+                }
+                //커버되지 않는 경우에 설치 + 커버리지에 기록
+                if (!isCovered) {
+                    count++;
+                    for (int j = i - m; j <= i + m; j++) {
+                        wifiCovered[j] = true;
+                    }
                 }
             }
+
         }
 
         bw.write(String.valueOf(count));
