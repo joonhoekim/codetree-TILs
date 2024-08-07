@@ -1,9 +1,3 @@
-public class Main {
-    public static void main(String[] args) {
-        // 여기에 코드를 작성해주세요.
-    }
-}package exhaustiveSearch.케이스별로나누기.좋은전략을추려내기;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
