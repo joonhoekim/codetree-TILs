@@ -26,22 +26,14 @@ public class Main {
             while (i < n && arr[i] == 0) {
                 i++;
             }
-
+            
             if (i >= n) break; // 더 이상 사람이 없으면 종료
 
-            // 와이파이 설치 위치 결정
+            // 와이파이 설치 위치 결정 (현재 위치에서 m만큼 오른쪽)
             int wifiPosition = Math.min(i + m, n - 1);
-
-            // 와이파이 범위 내에서 가장 오른쪽에 있는 사람 찾기
-            for (int j = wifiPosition; j > i; j--) {
-                if (arr[j] == 1) {
-                    wifiPosition = Math.min(j + m, n - 1);
-                    break;
-                }
-            }
-
+            
             wifiCount++; // 와이파이 설치
-            i = wifiPosition + 1; // 다음 검사 위치로 이동
+            i = wifiPosition + m + 1; // 다음 검사 위치로 이동 (와이파이 범위를 넘어선 다음 위치)
         }
 
         bw.write(String.valueOf(wifiCount));
