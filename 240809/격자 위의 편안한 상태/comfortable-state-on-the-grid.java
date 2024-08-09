@@ -29,7 +29,7 @@ public class Main {
     for (int i = 0; i < 4; i++) {
       int nr = r + dx[i];
       int nc = c + dy[i];
-      if (inRange(nr, nc) && arr[nr][nc] == 1) {
+      if (inN(nr, nc, arr.length) && arr[nr][nc] == 1) {
         count++;
       }
 
@@ -46,7 +46,7 @@ public class Main {
     }
   }
 
-  public static boolean inRange(int n, int m) {
-    return n >= 0 && n < 4 && m >= 0 && m < 4;
+  public static boolean inN(int n, int m, int N) {
+    return n >= 0 && n < N && m >= 0 && m < N;
   }
 }
