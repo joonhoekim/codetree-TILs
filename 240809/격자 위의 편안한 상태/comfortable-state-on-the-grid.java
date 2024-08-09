@@ -35,7 +35,8 @@ public class Main {
 
       if (count == 3) {
         isComport = true;
-        break;
+      } else {
+        isComport = false;
       }
     }
 
