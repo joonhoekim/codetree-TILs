@@ -39,7 +39,6 @@ public class Main {
         int ny = y + dy[dirNum];
 
         if (inRange(nx, ny, N)) {
-          System.out.printf("%d: %d\n",i,arr[x][y]);
           count += arr[nx][ny];
           x = nx;
           y = ny;
