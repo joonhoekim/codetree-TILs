@@ -48,25 +48,25 @@ public class Main {
 
     static int solve(int oddCount, int evenCount) {
 
-        if (evenCount >= oddCount) {
+        if (evenCount == oddCount) {
             //짝수가 더 많으면, 홀수 개수에 의존적임
+            return oddCount * 2;
+        } else if (evenCount > oddCount) {
             return oddCount * 2 + 1;
-        } else if (evenCount < oddCount) {
-            // 홀수 2x 개를 x개의 짝수로 바꾼다.
+        } else {
+            // 홀수 2*x 개를 x개의 짝수로 바꾼다.
             // evencount + x = oddCount - 2x
-            // 3x = oddCount - evenCount (단 x>=1 이어야 함 )
+            // 3x = oddCount - evenCount (단 x>=1 이어야 함)
             // 올림 처리해서, 짝홀짝홀 유지 가능하도록 함
             // 이렇게 처리하면, 최대 길이는 짝수 개수에 의존적임.
-            // 단 홀수가 홀수개여야 함! 안그러면 짝수로 변환하고, 홀수자리를 완성 불가
+            // 아래 코드는 대수적으로 푼건데 왜 틀린지 모르겠어서 일단 주석처리..
+            //            int x = (oddCount - evenCount + 3) / 3;
+            //            oddCount -= 2 * x;
+            //            evenCount += x;
 
-            int x = (oddCount - evenCount + 3) / 3;
-            oddCount -= 2 * x;
-            evenCount += x;
+            return solve(oddCount - 2,
+                         evenCount + 1);
 
         }
-
-        return solve(oddCount,
-                     evenCount);
-
     }
 }
