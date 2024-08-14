@@ -31,12 +31,7 @@ public class Main {
 
         //에지 처리
         if (m == 0 || m == 1) {
-            if (n == 1) {
-                System.out.println(1);
-            } else {
-                System.out.println(2 * n);
-            }
-
+            System.out.println(2 * n);
             br.close();
             return;
         }
