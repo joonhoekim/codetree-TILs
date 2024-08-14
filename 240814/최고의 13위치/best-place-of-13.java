@@ -17,7 +17,7 @@ public class Main {
     int max = Integer.MIN_VALUE;
 
     for (int i = 0; i < N; i++) {
-      for (int j = i; j < N-2; j++) {
+      for (int j = 0; j < N-2; j++) {
         max = Math.max(max, arr[i][j] + arr[i][j+1] + arr[i][j+2]);
       }
     }
