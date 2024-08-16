@@ -37,11 +37,6 @@ public class Main {
     //goldPrice
     int m = Integer.parseInt(st.nextToken());
     int[][] field = new int[n][n];
-    
-    if(n==1 && m>=0) {
-      System.out.println(1);
-      return;
-    }
 
     int goldCount = 0;
     for (int i = 0; i < n; i++) {
@@ -60,7 +55,7 @@ public class Main {
     int globalMaxCount = 0;
 
     // 전체 금을 다 캔다고 해도 코스트 감당이 불가한 경우는 제외해버림 (약간의 최적화..)
-    while (digCost <= goldCount * m) {
+    while (goldCount * m >= digCost) {
 
       // 채굴 사이즈에 맞게 마스크 생성
       int[][] mask = getMask(digSize);
