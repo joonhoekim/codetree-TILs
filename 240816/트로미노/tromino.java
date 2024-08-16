@@ -1,100 +1,88 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
 public class Main {
+    public static final int MAX_NUM = 200;
+    
+    public static int n, m;
+    public static int[][] grid = new int[MAX_NUM][MAX_NUM];
+    
+    // 가능한 모든 모양을 전부 적어줍니다.
+    public static int[][][] shapes = new int[][][]{
+        {{1, 1, 0},
+        {1, 0, 0},
+        {0, 0, 0}},
+    
+        {{1, 1, 0},
+        {0, 1, 0},
+        {0, 0, 0}},
+    
+        {{1, 0, 0},
+        {1, 1, 0},
+        {0, 0, 0}},
+    
+        {{0, 1, 0},
+        {1, 1, 0},
+        {0, 0, 0}},
+    
+        {{1, 1, 1},
+        {0, 0, 0},
+        {0, 0, 0}},
+    
+        {{1, 0, 0},
+        {1, 0, 0},
+        {1, 0, 0}},
+    };
+    
+    // 주어진 위치에 대하여 가능한 모든 모양을 탐색하며 최대 합을 반환합니다.
+    public static int getMaxSum(int x, int y) {
+        int maxSum = 0;
 
-  /*
-   * 문제 이해
-   * - 이차원 영역에 자연수들이 적혀있음
-   * - ㄴ, ㅡ 모양의 블럭 두 개를 슬라이딩 윈도우처럼 적용함
-   *   - 블럭은 한 개만 써야 함
-   *   - 블럭을 회전시킬 수 있음 (디지털이므로 90도만 가능함)
-   *   - 블럭을 반전시킬 수 있음 (뒤집기)
-   *   - 블럭이 밖으로 벗어나면 안됨
-   * - 블럭 내의 숫자들의 합으로 만들 수 있는 최댓값은?
-   *
-   * 접근
-   * - 블럭을 회전하거나 뒤집는 것을 어떻게 처리할까?
-   * - 블럭이 두개뿐이므로 하드코딩할 수도 있고,
-   * - 이차원 배열에 대해 선형대수 이론을 적용하여 뒤집기, 회전을 구현할 수 있다.
-   *
-   * 구현
-   * - 우선 블럭이 동적으로 주어지지 않고, 정해져 있으니 쉬운 하드코딩으로 풀어본다.
-   *
-   * */
-
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    StringTokenizer st = new StringTokenizer(br.readLine());
-    int n = Integer.parseInt(st.nextToken());
-    int m = Integer.parseInt(st.nextToken());
-
-    int[][] board = new int[n][m];
-    for (int i = 0; i < n; i++) {
-      st = new StringTokenizer(br.readLine());
-      for (int j = 0; j < m; j++) {
-        board[i][j] = Integer.parseInt(st.nextToken());
-      }
-
-    }
-
-    int globalmax = 0;
-    //r, c 는 블럭의 시작점 (왼쪽 위)이다.
-    for (int r = 0; r < n - 1; r++) {
-      for (int c = 0; c < m - 1; c++) {
-
-        //i 에 따라 ㄴ 자 블럭 회전을 구현한다.
-
-        for (int i = 0; i < 4; i++) {
-          int[] blockSum = new int[4];
-          blockSum[0] += board[r][c];
-          blockSum[1] += board[r + 1][c];
-          blockSum[2] += board[r][c + 1];
-          blockSum[3] += board[r + 1][c + 1];
-          int localSum = 0;
-          for (int j = 0; j < 4; j++) {
-            if (i == j) {
-              continue;
-            }
-            localSum += blockSum[j];
-          }
-          globalmax = Math.max(localSum, globalmax);
+        //모양을 선택(6가지)        
+        for(int i = 0; i < 6; i++) {
+            //넣을 수 있는지 확인한다.
+            boolean isPossible = true;
+            int sum = 0;
+            //결정론적으로 풀지 않고 3*3 마스크의 모든 원소에 대해 검사한다.
+            //여기서는 왼쪽 위부터, 컬럼을 증가시키면서 검사한다.
+            for(int dx = 0; dx < 3; dx++)
+                for(int dy = 0; dy < 3; dy++) {
+                  
+                    //해당 마스크에서 빈 곳이면 넘긴다.
+                    if(shapes[i][dx][dy] == 0) continue;
+                    //빈 곳이 아닐 때, 해당 원소가 그리드 밖으로 넘어가는지 검사한다. (x는 검사 지점으로, 마스크의 왼쪽위다.)
+                    //여기서 isPossible flag가 false이면 최댓값 후보가 아니게 된다. (이 때 break치고 나가는게 맞음.)
+                    if(x + dx >= n || y + dy >= m) {
+                        isPossible = false;
+                        break;
+                    }
+                    //현재 검사 지점이 그리드 안에 들어갈 수 있을 때, 그 값을 sum에 합한다.
+                    else sum += grid[x + dx][y + dy];
+                }
+    
+            if(isPossible)
+                maxSum = Math.max(maxSum, sum);
         }
-      }
+        
+        return maxSum;
     }
 
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < m; j++) {
-      }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        n = sc.nextInt();
+        m = sc.nextInt();
+        
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < m; j++)
+                grid[i][j] = sc.nextInt();
+        
+        int ans = 0;
+        
+        // 격자의 각 위치에 대하여 탐색하여줍니다.
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < m; j++)
+                ans = Math.max(ans, getMaxSum(i, j));
+        
+        System.out.print(ans);
     }
-
-    // ㅡ 자 블럭 처리
-    for (int r = 0; r < n; r++) {
-      for (int c = 0; c < m - 2; c++) {
-        int localSum = 0;
-        for (int i = c; i < c + 3; i++) {
-          localSum += board[r][i];
-        }
-        globalmax = Math.max(localSum, globalmax);
-      }
-    }
-
-    // ㅣ 자 블럭 처리
-    for (int r = 0; r < n - 2; r++) {
-      for (int c = 0; c < m; c++) {
-        int localSum = 0;
-        for (int i = r; i < r + 3; i++) {
-          localSum += board[i][c];
-        }
-        globalmax = Math.max(localSum, globalmax);
-      }
-    }
-
-    System.out.println(globalmax);
-    br.close();
-
-  }
-
 }
