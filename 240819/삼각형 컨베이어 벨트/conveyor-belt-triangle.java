@@ -49,11 +49,11 @@ public class Main {
         }
 
         sb = new StringBuilder();
-        for (int i = 0; i < ANGLE; i++) {
-            for (int j = 0; j < n; j++) {
-                sb.append(arr[ANGLE * i + j]).append(" ");
+        for (int i = 0; i < size; i++) {
+            sb.append(arr[i]).append(" ");
+            if ((i + 1) % n == 0) {
+                sb.append("\n");
             }
-            sb.append("\n");
         }
 
         System.out.println(sb);
