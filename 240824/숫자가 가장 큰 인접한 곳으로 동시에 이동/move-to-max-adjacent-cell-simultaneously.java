@@ -35,7 +35,7 @@ public class Main {
      * List 같이 사이즈를 초기에 정할 필요가 없는 컬렉션을 쓰는 게 좋을 것 같다.
      * */
 
-    static int[] dr = new int[]{1, -1, 0, 0};
+    static int[] dr = new int[]{-1, +1, 0, 0};
     static int[] dc = new int[]{0, 0, -1, 1};
 
     public static void main(String[] args) throws Exception {
@@ -92,23 +92,23 @@ public class Main {
             //points를 newPoints로 deep copy해주고
             //newPoints를 비워서 다음 반복에 사용한다.
             points.clear();
-            for (Point point : nextPoints) {
-                points.add(point);
-            }
+            points.addAll(nextPoints);
             nextPoints.clear();
 
         }
 
-        int ans = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (count[i][j] == 1) {
-                    ans += 1;
-                }
-            }
-        }
-
-        System.out.println(ans);
+        System.out.println(points.size());
+// 굳이 답을 count[][] 참조해서 다시 구해줄 필요가 없네
+//        int ans = 0;
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < n; j++) {
+//                if (count[i][j] == 1) {
+//                    ans += 1;
+//                }
+//            }
+//        }
+//
+//        System.out.println(ans);
     }
 
     private static Point getDestination(Point point, int[][] board) {
@@ -121,7 +121,6 @@ public class Main {
             int r = point.x + dr[i];
             int c = point.y + dc[i];
             boolean isInBoundary = 0 <= r && r < n && 0 <= c && c < n;
-
 
             if (isInBoundary) {
                 if (max <= board[r][c]) {
