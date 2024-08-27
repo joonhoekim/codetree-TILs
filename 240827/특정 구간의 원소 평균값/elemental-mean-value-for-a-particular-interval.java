@@ -17,21 +17,18 @@ public class Main {
     for (int i = 0; i < N; i++) {
       for (int j = i; j < N; j++) {
         double sum = 0;
-        double count = 0;
         for (int k = i; k <= j; k++) {
           sum += arr[k];
-          count++;
         }
-        double avg = sum/count;
+        double avg = sum/(j-i+1);
 
-        for (int l = 0; l < N; l++) {
-          if (avg == arr[l]) {
+        for(int k = i; k <= j; k++) {
+          if (arr[k] == avg) {
             result++;
             break;
           }
         }
       }
-
     }
 
     System.out.println(result);
