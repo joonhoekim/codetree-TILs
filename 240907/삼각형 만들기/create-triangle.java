@@ -10,8 +10,8 @@ public class Main {
 
     // initializing
     for (int i = 0; i < N; i++) {
-        xArr[i] = sc.nextInt();
-        yArr[i] = sc.nextInt();
+      xArr[i] = sc.nextInt();
+      yArr[i] = sc.nextInt();
     }
 
     int area = 0;
@@ -20,8 +20,8 @@ public class Main {
     for (int i = 0; i < N; i++) {
       for (int j = i+1; j < N; j++) {
         for (int k = j+1; k < N; k++) {
-          if (xArr[i] == xArr[j] || xArr[i] == xArr[k] || xArr[j] == xArr[k] &&
-              yArr[i] == yArr[j] || yArr[i] == yArr[k] || yArr[j] == yArr[k]) {
+          if ((xArr[i] == xArr[j] || xArr[i] == xArr[k] || xArr[j] == xArr[k]) &&
+              (yArr[i] == yArr[j] || yArr[i] == yArr[k] || yArr[j] == yArr[k])) {
             int xLength = getMax(xArr[i], xArr[j], xArr[k]) - getMin(xArr[i], xArr[j], xArr[k]);
             int yLength = getMax(yArr[i], yArr[j], yArr[k]) - getMin(yArr[i], yArr[j], yArr[k]);
 
