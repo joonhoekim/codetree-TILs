@@ -21,7 +21,7 @@ public class Main {
     for (int i = 0; i < N; i++) {
       int[] workTime = new int[1000];
       int operatingTime = 0;
-      
+
       for (int j = 0; j < N; j++) {
         // i(개발자 한명)를 제외한 나머지 운행 시간을 계산
         if (i != j) {
@@ -32,9 +32,9 @@ public class Main {
           }
         }
       }
-      
+
       // 총 운행 시간 계산
-      for (int j = 1; j < 10; j++) {
+      for (int j = 1; j < workTime.length-1; j++) {
         if (workTime[j] >= 1) {
           operatingTime++;
         }
