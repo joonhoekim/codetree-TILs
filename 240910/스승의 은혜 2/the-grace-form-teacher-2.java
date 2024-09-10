@@ -1,4 +1,5 @@
-import java.util.Scanner;
+import java.util.Arrays;
+  import java.util.Scanner;
 
   public class Main {
 
@@ -17,25 +18,20 @@ import java.util.Scanner;
       int max = 0;
 
       for (int i = 0; i < N; i++) {
-        int[] temp = new int[N];
-        
+        int[] temp = P.clone();
+        temp[i] /= 2;
+        Arrays.sort(temp);
+
+        int sum = 0;
+        int count = 0;
+
         for (int j = 0; j < N; j++) {
-          temp[j] = P[j];
-          temp[i] /= 2;
-        }
-        
-      Arrays.sort(temp, 0, n);
-        
-      int sum = 0;
-      int count = 0;
-        
-       for (int j = 0; j < N; j++) {
          int price = temp[j];
-         
+
          if (sum + price > B) {
            break;
          }
-         
+
           sum += price;
           count++;
         }
