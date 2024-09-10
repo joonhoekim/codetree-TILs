@@ -22,13 +22,14 @@ import java.util.Arrays;
         int count = 0;
         for (int j = 0; j < N; j++) {
           int price = P[j];
+          if (i==j) {
+            price /= 2;
+          }
+
           if (sum + price > B) {
             continue;
           }
 
-          if (i==j) {
-            price /= 2;
-          }
           sum += price;
           count++;
         }
