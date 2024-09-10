@@ -1,4 +1,6 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+  import java.util.Arrays;
+  import java.util.List;
   import java.util.Scanner;
 
   public class Main {
@@ -18,18 +20,25 @@ import java.util.Arrays;
       int max = 0;
 
       for (int i = 0; i < N; i++) {
-        int sum = 0;
-        int count = 0;
+        int[] temp = new int[N];
+        
         for (int j = 0; j < N; j++) {
-          int price = P[j];
-          if (i==j) {
-            price /= 2;
-          }
-
-          if (sum + price > B) {
-            continue;
-          }
-
+          temp[j] = P[j];
+          temp[i] /= 2;
+        }
+        
+      Arrays.sort(temp);
+        
+      int sum = 0;
+      int count = 0;
+        
+       for (int j = 0; j < N; j++) {
+         int price = temp[j];
+         
+         if (sum + price > B) {
+           break;
+         }
+         
           sum += price;
           count++;
         }
