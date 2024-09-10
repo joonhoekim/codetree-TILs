@@ -20,7 +20,7 @@ import java.util.Arrays;
       for (int i = 0; i < N; i++) {
         int[] temp = P.clone();
         temp[i] /= 2;
-        Arrays.sort(temp);
+        Arrays.sort(temp, 0, N);
 
         int sum = 0;
         int count = 0;
