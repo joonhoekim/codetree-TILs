@@ -27,7 +27,7 @@ import java.util.ArrayList;
           temp[i] /= 2;
         }
         
-      Arrays.sort(temp);
+      Arrays.sort(temp, 0, n);
         
       int sum = 0;
       int count = 0;
