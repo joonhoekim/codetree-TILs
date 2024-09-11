@@ -1,48 +1,45 @@
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.io.*;
 
 public class Main {
-    static Scanner sc = new Scanner(System.in);
-    static List<Integer> answer = new LinkedList<>();
-    static int maxValue;
-    static int maxDigit;
-    static List<String> results = new LinkedList<>(); // 결과를 저장할 리스트
+    private static int[] answer;
+    private static int maxValue;
+    private static int maxDigit;
+    private static BufferedWriter bw;
 
-    static void choose(int currDigit) {
-        if (currDigit == 0) {
-            saveResult();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        String[] input = br.readLine().split(" ");
+        maxValue = Integer.parseInt(input[0]);
+        maxDigit = Integer.parseInt(input[1]);
+
+        answer = new int[maxDigit];
+        
+        choose(0);
+
+        bw.flush();
+        bw.close();
+        br.close();
+    }
+
+    private static void choose(int currDigit) throws IOException {
+        if (currDigit == maxDigit) {
+            writeResult();
             return;
         }
 
         for (int i = 1; i <= maxValue; i++) {
-            answer.add(i);
-            choose(currDigit - 1);
-            answer.remove(answer.size() - 1);
+            answer[currDigit] = i;
+            choose(currDigit + 1);
         }
     }
 
-    static void saveResult() {
-        StringBuilder sb = new StringBuilder();
-        for (Integer integer : answer) {
-            sb.append(integer).append(" ");
+    private static void writeResult() throws IOException {
+        for (int i = 0; i < maxDigit; i++) {
+            bw.write(Integer.toString(answer[i]));
+            bw.write(' ');
         }
-        results.add(sb.toString());
-    }
-
-    static void printResults() {
-        for (String result : results) {
-            System.out.println(result);
-        }
-    }
-
-    public static void main(String[] args) {
-        int k = sc.nextInt();
-        int n = sc.nextInt();
-        maxValue = k;
-        maxDigit = n;
-
-        choose(maxDigit);
-        printResults(); // 모든 결과를 한 번에 출력
+        bw.newLine();
     }
 }
