@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
   public class Main {
-    public static int[][] arr = new int[10][20];
+    public static int[][] rank = new int[10][20];
 
     public static void main(String[] args) {
       Scanner sc = new Scanner(System.in);
@@ -11,7 +11,8 @@ import java.util.Scanner;
 
       for (int i = 0; i < K; i++) {
         for (int j = 0; j < N; j++) {
-          arr[i][j] = sc.nextInt();
+          int developer = sc.nextInt()-1;  
+          rank[i][developer] = j;
         }
       }
 
@@ -19,12 +20,12 @@ import java.util.Scanner;
       for (int a = 0; a < N; a++) {
         for (int b = 0; b < N; b++) {
           boolean isHigher = true;
-          for (int i = 0; i < K; i++) {
-
-            if (a == b ||arr[i][a] <= arr[i][b]) {
+          for (int k = 0; k < K; k++) {
+            if (a == b || rank[k][a] > rank[k][b]) {
               isHigher = false;
               break;
             }
+            
           }
           if (isHigher) {
             count++;
