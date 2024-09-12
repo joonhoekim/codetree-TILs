@@ -26,7 +26,7 @@ public class Main {
           continue;
         }
 
-        if (box[i] == box[j] || N-j > K ) {
+        if (box[i] == box[j]) {
           bombNo = Math.max(bombNo, box[j]);
         }
       }
