@@ -16,14 +16,22 @@ public class Main {
     int bombNo = -1;
 
     for (int i = 0; i < N; i++) {
-      for (int j = i+1; j <= i+K; j++) {
+      for (int j = 0; j < N; j++) {
+        if (i == j) {
+          continue;
+        }
+
+        boolean isRange = Math.abs(i - j) <= K;
+        if (!isRange) {
+          continue;
+        }
+
         if (box[i] == box[j] || N-j > K ) {
           bombNo = Math.max(bombNo, box[j]);
         }
       }
     }
 
-    // 결과 출력
     System.out.println(bombNo);
   }
 }
