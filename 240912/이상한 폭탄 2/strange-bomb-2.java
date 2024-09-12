@@ -17,12 +17,11 @@ public class Main {
 
     for (int i = 0; i < N; i++) {
       for (int j = i+1; j <= i+K; j++) {
-        if (box[i] == box[j]) {
+        if (box[i] == box[j] || N-j > K ) {
           bombNo = Math.max(bombNo, box[j]);
         }
       }
     }
-
 
     // 결과 출력
     System.out.println(bombNo);
