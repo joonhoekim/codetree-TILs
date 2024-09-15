@@ -26,28 +26,15 @@ public class Main {
     }
 
     static void insertionSort(int[] arr) {
-        int unsortedIdx = 0;
-        int minIdx = 0;
+        for (int i = 1; i < arr.length; i++) {
+            int key = arr[i];
+            int j = i - 1;
 
-        while(unsortedIdx < arr.length) {
-
-            //최솟값 인덱스를 구해서...
-            minIdx = IntStream.range(unsortedIdx, arr.length)
-            .reduce((acc, check) -> arr[acc] <= arr[check] ? acc : check)
-            .getAsInt();
-
-            //가장 작은 인덱스에 삽입해서 정렬한다.
-            swap(arr, unsortedIdx++, minIdx);
-
-            //시간복잡도는 엔스퀘어로 동일하지만,
-            //삽입 정렬이 스왑이 제일 적다. 그 다음은 선택 정렬이다. 버블정렬은 가장 비효율적이다.
-
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
         }
-    }
-
-    static void swap(int[] arr, int idxA, int idxB) {
-        int temp = arr[idxA];
-        arr[idxA] = arr[idxB];
-        arr[idxB] = temp;
     }
 }
