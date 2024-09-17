@@ -11,11 +11,11 @@ public class Main {
     br.readLine();
     int[] arr = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
-    int k = getDigitLength(getMax(arr))+1;
+//    int k = getDigitLength(getMax(arr));
 
-    radixSort(arr, k);
+    int[] sortedArr = radixSort(arr, 6);
 
-    String answer = String.join(" ", Arrays.stream(arr).mapToObj(String::valueOf).toArray(String[]::new));
+    String answer = String.join(" ", Arrays.stream(sortedArr).mapToObj(String::valueOf).toArray(String[]::new));
     
     System.out.println(answer);
   }
@@ -59,26 +59,33 @@ function radix_sort(arr, k)
   return arr
 
   * */
-  public static void radixSort(int[] arr, int k) {
+  public static int[] radixSort(int[] arr, int k) {
     for (int pos = k - 1; pos >= 0; pos--) {
       List<List<Integer>> arrNew = new ArrayList<>(10);
       for (int i = 0; i < 10; i++) {
         arrNew.add(new ArrayList<>());
       }
 
+      // 현재 자릿수에 따라 숫자들을 분류
       for (int num : arr) {
         int digit = getDigit(num, pos);
         arrNew.get(digit).add(num);
       }
 
+      // 분류된 숫자들을 순서대로 새 배열에 저장
+      int[] storeArr = new int[arr.length];
       int index = 0;
       for (List<Integer> bucket : arrNew) {
         for (int num : bucket) {
-          arr[index++] = num;
+          storeArr[index++] = num;
         }
       }
+
+      // 원본 배열을 새로 정렬된 배열로 교체
+      arr = storeArr;
     }
 
+    return arr;
   }
 
   private static int getDigit(int num, int pos) {
