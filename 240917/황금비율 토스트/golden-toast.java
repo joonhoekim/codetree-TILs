@@ -34,8 +34,9 @@ public class Main {
                         case "D":
                             if (iterator.hasNext()) {
                                 iterator.next();
+                                iterator.remove();
                             }
-                            iterator.remove();
+                            
                             break;
                         case "P":
                             iterator.add(command[1].charAt(0));
