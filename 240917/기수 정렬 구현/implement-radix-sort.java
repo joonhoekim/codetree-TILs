@@ -11,7 +11,7 @@ public class Main {
     br.readLine();
     int[] arr = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 
-    int k = getDigitLength(getMax(arr));
+    int k = getDigitLength(getMax(arr))+1;
 
     radixSort(arr, k);
 
