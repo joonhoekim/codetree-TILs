@@ -28,8 +28,8 @@ public class Main {
         if (newSeats[j] == '1') {
           if (isCounting) {
             closest = Math.min(distance, closest);
-            distance = 0;
           }
+          distance = 0;
           isCounting = true;
         }
         distance++;
