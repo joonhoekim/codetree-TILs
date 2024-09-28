@@ -10,7 +10,6 @@ public class Main {
 
     // 입력
     int n = sc.nextInt();
-    System.out.println();
 
     for (int i = 0; i < n; i++) {
       a[i] = sc.nextInt();
