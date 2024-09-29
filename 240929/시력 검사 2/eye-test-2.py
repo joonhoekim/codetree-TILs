@@ -1,7 +1,7 @@
 es=float(input())
 status=''
 if es>=1.0:
-    status='high'
+    status='High'
 elif es>=.5:
     status='Middle'
 else:
