@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
   public static int MAX_N = 1000;
+  public static int MAX_RANGE = 10000;
   public static int[] arr = new int[MAX_N];
 
   public static void main(String[] args) {
@@ -16,7 +17,7 @@ public class Main {
     }
 
     int max = Integer.MIN_VALUE;
-    for (int i = 0; i <= K; i++) {
+    for (int i = 0; i <= MAX_RANGE; i++) {
       int count = 0;
       for (int j = 0; j < N; j++) {
         if (i <= arr[j] && arr[j] <= i+K) {
