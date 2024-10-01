@@ -17,7 +17,7 @@ public class Main {
       stones[i] = sc.nextInt();
     }
 
-    for (int m = 1; m <= MAX_N; m++) {
+    for (int m = Math.max(stones[0], stones[n-1]); m <= MAX_N; m++) {
       if (isPossible(m)) {
         System.out.println(m);
         break;
@@ -25,10 +25,10 @@ public class Main {
     }
   }
 
-  public static boolean isPossible(int min) {
+  public static boolean isPossible(int a) {
     int idx = 0;
     for (int i = 0; i < n; i++) {
-      if (stones[i] <= min) {
+      if (stones[i] <= a) {
         if (i - idx > k) {
           return false;
         }
