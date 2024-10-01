@@ -3,7 +3,7 @@ for i in range(1, n+1):
     cond1 = i%3==0
     if cond1:
         print(0, end=" ")
-        break;
+        continue
     temp = i
 
     cond2=False
@@ -16,6 +16,6 @@ for i in range(1, n+1):
         
     if cond2:
         print(0, end=" ")
-        break;
+        continue
     
     print(i, end=" ")
