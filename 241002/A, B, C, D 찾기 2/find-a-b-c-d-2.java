@@ -18,9 +18,9 @@ public class Main {
 
     loop:
     for (int i = 0; i < N; i++) {
-      for (int j = 0; j < N; j++) {
-        for (int k = 0; k < N; k++) {
-          for (int l = 0; l < N; l++) {
+      for (int j = i+1; j < N; j++) {
+        for (int k = j+1; k < N; k++) {
+          for (int l = k+1; l < N; l++) {
             int a = list.get(i);
             int b = list.get(j);
             int c = list.get(k);
