@@ -1,7 +1,8 @@
-n = 4
-for i in range(n):
-    arr=list(map(int,input().split()))
-    line_sum=0
-    for j in range(n):
-        line_sum+=arr[j]
-    print(line_sum)
+n=4
+arr_2d=[
+    list(map(int,input().split()))
+    for _ in range(n)
+]
+
+for i in range(4):
+    print(sum(arr_2d[i]))
