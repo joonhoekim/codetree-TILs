@@ -1,8 +1,7 @@
 input()
-n1=list(map(int, input().split()))
-n2=list(map(int, input().split()))
+n1=input()
+n2=input()
 if n2 in n1:
-    answer='Yes'
+    print('Yes')
 else:
-    answer='No'
-print(answer)
+    print('No')
