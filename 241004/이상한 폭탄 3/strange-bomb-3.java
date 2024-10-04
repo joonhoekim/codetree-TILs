@@ -22,7 +22,7 @@ public class Main {
     }
     int maxNo = 0;
     for (int i = 0; i < N; i++) {
-      for (int j = 0; j <= i+K; j++) {
+      for (int j = i+1; j <= i+K; j++) {
         if (i == j) {
           continue;
         }
@@ -47,6 +47,10 @@ public class Main {
         maxNo = entry.getKey();
       }
     }
-    System.out.println(maxNo);
+    if (maxCount == 0) {
+      System.out.println(0);
+    } else {
+      System.out.println(maxNo);
+    }
   }
 }
