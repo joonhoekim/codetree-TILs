@@ -8,7 +8,7 @@ for i, el in enumerate(arr):
     list_.append(el)
     
     if i%2==0:
-        arr.sort()
-        answer.append(arr[i//2])
+        list_.sort()
+        answer.append(list_[i//2])
 
 print(' '.join(map(str,answer)))
