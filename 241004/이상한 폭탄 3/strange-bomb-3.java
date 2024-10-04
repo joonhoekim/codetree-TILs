@@ -28,22 +28,23 @@ public class Main {
         }
         if (bombs[i] == bombs[j]) {
           if (!isExploded[i]) {
-            countMap.put(bombs[i], countMap.getOrDefault(i, 0) + 1);
+            countMap.put(bombs[i], countMap.getOrDefault(bombs[i], 0) + 1);
           }
           if (!isExploded[j]) {
-            countMap.put(bombs[j], countMap.getOrDefault(j, 0) + 1);
+            countMap.put(bombs[j], countMap.getOrDefault(bombs[j], 0) + 1);
           }
 
           isExploded[i] = true;
           isExploded[j] = true;
         }
-        int maxCount = 0;
-        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
-          if (entry.getValue() > maxCount) {
-            maxCount = entry.getValue();
-            maxNo = entry.getKey();
-          }
-        }
+      }
+    }
+
+    int maxCount = 0;
+    for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+      if (entry.getValue() > maxCount) {
+        maxCount = entry.getValue();
+        maxNo = entry.getKey();
       }
     }
     System.out.println(maxNo);
