@@ -16,34 +16,34 @@ public class Main {
       list.add(arr[i]);
     }
 
-    ListIterator<Character> it = list.listIterator();
-
-
-    while (it.hasNext()) {
-      it.next();
-    }
+    ListIterator<Character> it = list.listIterator(list.size());
 
     for (int i = 0; i <= m; i++) {
       String command = sc.nextLine();
 
       if (command.startsWith("L")) {
-        it.previous();
+        if (it.hasPrevious()) {
+          it.previous();
+        }
       } else if (command.startsWith("R")) {
-        it.next();
+        if (it.hasNext()) {
+          it.next();
+        }
       } else if (command.startsWith("D")) {
-        it.next();
-        it.remove();
+        if (it.hasNext()) {
+          it.next();
+          it.remove();
+        }
+
       } else if (command.startsWith("P")) {
         char x = (command.charAt(command.length()-1));
         it.add(x);
       }
     }
 
-    for (char x : list) {
-      System.out.print(x);
+    it = list.listIterator();
+    while(it.hasNext()) {
+      System.out.println(it.next());
     }
-
-
-
   }
 }
