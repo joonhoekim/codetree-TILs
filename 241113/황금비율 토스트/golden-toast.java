@@ -9,11 +9,10 @@ public class Main {
     LinkedList<Character> list = new LinkedList<>();
     int n = sc.nextInt();
     int m = sc.nextInt();
-
-    char[] arr = sc.next().toCharArray();
-
-    for (int i = 0; i < n; i++) {
-      list.add(arr[i]);
+    String s = sc.next();
+    
+    for (int i = 0; i < s.length(); i++) {
+        list.add(s.charAt(i));
     }
 
     ListIterator<Character> it = list.listIterator(list.size());
@@ -45,8 +44,5 @@ public class Main {
     while(it.hasNext()) {
       System.out.print(it.next());
     }
-
-
-
   }
 }
