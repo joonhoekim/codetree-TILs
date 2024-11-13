@@ -18,7 +18,7 @@ public class Main {
 
     ListIterator<Character> it = list.listIterator(list.size());
 
-    while (m-- > 0) {
+    while (m-- >= 0) {
       String command = sc.nextLine();
 
       if (command.startsWith("L")) {
