@@ -43,7 +43,10 @@ public class Main {
 
     it = list.listIterator();
     while(it.hasNext()) {
-      System.out.println(it.next());
+      System.out.print(it.next());
     }
+
+
+
   }
 }
