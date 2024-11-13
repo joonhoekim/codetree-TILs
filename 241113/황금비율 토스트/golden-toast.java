@@ -9,16 +9,15 @@ public class Main {
     LinkedList<Character> list = new LinkedList<>();
     int n = sc.nextInt();
     int m = sc.nextInt();
-
-    char[] arr = sc.next().toCharArray();
+    String s = sc.next();
 
     for (int i = 0; i < n; i++) {
-      list.add(arr[i]);
+      list.add(s.charAt(i));
     }
 
     ListIterator<Character> it = list.listIterator(list.size());
 
-    for (int i = 0; i <= m; i++) {
+    for (int i = 0; i < m; i++) {
       char command = sc.next().charAt(0);
 
       if (command == 'L') {
