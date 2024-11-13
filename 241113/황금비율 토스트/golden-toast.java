@@ -18,25 +18,25 @@ public class Main {
 
     ListIterator<Character> it = list.listIterator(list.size());
 
-    while (m-- >= 0) {
-      String command = sc.nextLine();
+    for (int i = 0; i <= m; i++) {
+      char command = sc.next().charAt(0);
 
-      if (command.startsWith("L")) {
+      if (command == 'L') {
         if (it.hasPrevious()) {
           it.previous();
         }
-      } else if (command.startsWith("R")) {
+      } else if (command == 'R') {
         if (it.hasNext()) {
           it.next();
         }
-      } else if (command.startsWith("D")) {
+      } else if (command == 'D') {
         if (it.hasNext()) {
           it.next();
           it.remove();
         }
 
-      } else if (command.startsWith("P")) {
-        char x = (command.charAt(command.length()-1));
+      } else if (command == 'P') {
+        char x = sc.next().charAt(0);
         it.add(x);
       }
     }
