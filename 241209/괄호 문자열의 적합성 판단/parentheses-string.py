@@ -29,14 +29,14 @@ n = input()
 stack = Stack()
 
 for i in n:
-  if i == '()':
+  if i == '(':
     stack.push('(')
   else:
     if stack.empty():
       print("No")
       sys.exit(0)
 
-      s.pop()
+    stack.pop()
 
 if stack.empty():
   print("Yes")
